@@ -111,7 +111,7 @@ in Asia </p>
                     </div>
                 </div>
                 <div class="footer-bottom padding-top light-color text-center pb-70">
-                    <p><a href="#0">curcmartcoins.asia</a> © 2020. All rights reserved</p>
+                    <p><a href="#0">ourcmartcoins.asia</a> © 2020. All rights reserved</p>
                 </div>
             </div>
         </footer>
