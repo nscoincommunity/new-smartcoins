@@ -21,6 +21,11 @@
     <link rel="shortcut icon" href="<?php echo base_url();?>asset/osc/images/favicon.png" type="image/x-icon">
 
     <script src="<?php echo base_url();?>asset/osc/js/all-fontawe.js"></script>
+    <style>
+        .contact-header .title{
+            text-transform: none !important;
+        }
+    </style>
     
 </head>
 <body>

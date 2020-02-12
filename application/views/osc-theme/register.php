@@ -81,7 +81,7 @@
                     <div class="col-lg-6">
                         <div class="contact-header">
                             <span>Your Sponsor : </span>
-                            <h4 class="title"><?php foreach($sponsor as $names) { echo $names['nama_lengkap'] ; }  ?> </h4>
+                            <h5 class="title"><?php foreach($sponsor as $names) { echo $names['username'] ; }  ?> </h5>
                         </div>
                        
 
