@@ -1,5 +1,57 @@
 <?php
 error_reporting(0);
+
+function kirim_email($penerima,$judul,$isi,$fromemail='sewuwebmail@gmail.com',$fromname='Smartcoons Asia') {
+    
+        //non smtp --------
+        /*
+                $_this = & get_instance();
+                $_this->email->from($fromemail, $fromname);
+				$_this->email->to($penerima);
+				$_this->email->cc('');
+				$_this->email->bcc('');
+
+				$_this->email->subject($judul);
+				$_this->email->message($isi);
+				$_this->email->set_mailtype("html");
+				$_this->email->send();
+
+				$config['protocol'] = 'sendmail';
+				$config['mailpath'] = '/usr/sbin/sendmail';
+				$config['charset'] = 'utf-8';
+				$config['wordwrap'] = TRUE;
+				$config['mailtype'] = 'html';
+				$_this->email->initialize($config);
+
+        */
+
+        // pakai smtp 
+        $ci = & get_instance();
+        $ci->load->library('email');
+        $config['protocol'] = "smtp";
+        $config['smtp_host'] = "ssl://smtp.gmail.com";
+        $config['smtp_port'] = "465";
+        $config['smtp_user'] = "sewuwebmail@gmail.com";
+        $config['smtp_pass'] = "yeye1234";
+        $config['charset'] = "utf-8";
+        $config['mailtype'] = "html";
+        $config['newline'] = "\r\n";
+        $ci->email->initialize($config);
+
+        $ci->email->from($fromemail, $fromname);
+        $list = array($penerima);
+        $ci->email->to($list);
+        $ci->email->subject($judul);
+        $ci->email->message($isi);
+        if ($ci->email->send()) {
+            //echo 'Email sent.';
+        } else {
+            show_error($ci->email->print_debugger());
+        } 
+
+
+    }
+
     function cek_session_akses($link,$id){
         $ci = & get_instance();
         $session = $ci->db->query("SELECT * FROM modul,users_modul WHERE modul.id_modul=users_modul.id_modul AND users_modul.id_session='$id' AND modul.link='$link'")->num_rows();
