@@ -79,7 +79,7 @@ in Asia </p>
                                 </li>
                                 <li>
                                     <a href="#0">
-                                         How To Withdrawal 
+                                         Withdrawal 
                                     </a>
                                 </li>
                                 <li>
