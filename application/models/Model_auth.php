@@ -47,7 +47,7 @@ class Model_auth extends CI_model{
 
         //$kirim = kirim_email($email_tujuan,$subject,$message);
         
-        $this->email->from($ident['email'], $ident['nama_website']);
+        $this->email->from('sewuwebmail@gmail.com', $ident['nama_website']);
         $this->email->to($email_tujuan);
         $this->email->cc('');
         $this->email->bcc('');
