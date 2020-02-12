@@ -15,4 +15,6 @@ class Agenda extends CI_Controller {
 		$this->model_agenda->agenda_dibaca_update($ids);
 		$this->template->load('phpmu-one/template','phpmu-one/view_agenda',$data);
 	}
+
+
 }

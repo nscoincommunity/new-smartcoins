@@ -39,9 +39,6 @@
                                 </table>";
             ?>
           </div>
-
-
-
         </div>
         <div class="tab-pane fade" id="user-settings">
           <div class="tile user-settings">
