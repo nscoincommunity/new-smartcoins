@@ -110,13 +110,13 @@
                                                 <input type='number' class='required number form-control' name='noktp' id='nomor_ktp' placeholder='Valid Identity / KTP'>
                                                 <span id='ktp_response' ></span> </div> <div class='form-group w-100'>
 
-                                                <textarea class='required form-control' name='alamatlengkap' minlength='10' placeholder='Address'></textarea>
+                                                <!--<textarea class='required form-control' name='alamatlengkap' minlength='10' placeholder='Address'></textarea> -->
 
 </div> <div class='form-group'>
 
                                                 <input type='text' class='required form-control' name='kotanya' id='kotaa' required placeholder='City'></div> <div class='form-group'>
 
-                                                <input type='text' class='required form-control' name='provinsinya' placeholder='Province'></div> <div class='form-group'>
+                                                <input type='text' class='required form-control' name='provinsinya' placeholder='Country'></div> <div class='form-group'>
 
                                                 <input type='text' class='required form-control' name='namabank' placeholder='Bank Name'></div> <div class='form-group'>
 

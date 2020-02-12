@@ -16,7 +16,7 @@ class Model_auth extends CI_model{
                           'email'=>$this->db->escape_str(strip_tags($this->input->post('email'))),
                           'rekning_virtual'=>$this->db->escape_str(strip_tags($this->input->post('vrek'))),
                           'no_ktp'=>$this->db->escape_str(strip_tags($this->input->post('noktp'))),
-                          'alamat_lengkap'=>$this->db->escape_str(strip_tags($this->input->post('alamatlengkap'))),
+                          'alamat_lengkap'=>'-',
                           'ahli_waris'=>'-',
                           'kota'=>$this->db->escape_str(strip_tags($this->input->post('kotanya'))),
                           'provinsi'=>$this->db->escape_str(strip_tags($this->input->post('provinsinya'))),
