@@ -397,6 +397,27 @@ class Model_investasi extends CI_model {
 
   }
 
+  function get_member_by_email($email){
+    $this->db->where('email',$email);
+    $query = $this->db->get('rb_konsumen');
+    return $query;
+  } 
+
+  function get_by_token($token){
+    $this->db->where('token',$token);
+    $query = $this->db->get('rb_konsumen');
+    return $query;
+  } 
+
+  function updatepass($email,$pass) {
+    $data = array('password'=>$pass);
+    $this->db->where('email',$email);
+    $this->db->update('rb_konsumen',$data);
+
+  }
+
+
+
 
 //////////////////////////////////////////////////////////////////
 /*

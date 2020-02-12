@@ -9,9 +9,7 @@
 
       <h4>DEPOSIT PACKAGES </h4>
         <p>You can start a deposit from $ 100 to $ 10,000. Each deposit package will incur a <?php echo '$'.$this->model_investasi->get_setting_bonus()->fee_maintenance; ?> maintenance fee and will be paid when making a deposit. To maximize the profit you get, you can make a deposit several times without limit.</p>
-
-
-        
+  
       </div>
       <div class="col-md-6">
         <h4>Form Make a Deposit </h4>

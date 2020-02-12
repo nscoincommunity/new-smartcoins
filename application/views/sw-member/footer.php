@@ -41,20 +41,7 @@ $('#invest-table').DataTable( {
         ]
     });
 
-$('#TableProfit').DataTable({
-        "order": [[ 0, "desc" ]],
-        "columnDefs": [
-            {
-                "targets": [ 0 ],
-                "visible": false,
-                "searchable": false
-            },
-            {
-                "targets": [ 0 ],
-                "visible": false
-            }
-        ]
-    } );
+$('#TableProfit').DataTable();
   
   $('#TableBonus').DataTable({
         "order": [[ 0, "desc" ]],

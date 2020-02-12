@@ -60,6 +60,8 @@
 
         <li><a class="app-menu__item <?php if($this->uri->segment(2) == 'myprofit') {echo 'active';} ?> " href="<?php echo base_url();?>investasi/myprofit/"><i class="app-menu__icon fa fa-list"></i><span class="app-menu__label"> DAILY PROFIT REPORT</span></a></li>
 
+        <li><a class="app-menu__item <?php if($this->uri->segment(2) == 'sponsorship') {echo 'active';} ?> " href="<?php echo base_url();?>investasi/sponsorship/"><i class="app-menu__icon fa fa-users"></i><span class="app-menu__label"> SPONSORSHIP</span></a></li>
+
         <li><a class="app-menu__item <?php if($this->uri->segment(2) == 'mybonus') {echo 'active';} ?> " href="<?php echo base_url();?>investasi/mybonus/"><i class="app-menu__icon fa fa-briefcase"></i><span class="app-menu__label"> BONUS REPORT</span></a></li>
 
         <li><a class="app-menu__item <?php if($this->uri->segment(2) == 'withdraw') {echo 'active';} ?> " href="<?php echo base_url();?>investasi/withdraw"><i class="app-menu__icon fa fa-dollar"></i><span class="app-menu__label"> WITHDRAWAL REPORT</span></a></li>

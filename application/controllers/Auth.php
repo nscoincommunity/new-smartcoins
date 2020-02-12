@@ -283,9 +283,9 @@ class Auth extends CI_Controller {
 			}
 		}else{
 			$data['title'] = 'User Login';
-			$this->load->view('osc-theme/header',$data);
-			$this->load->view('osc-theme/login',$data);
-			$this->load->view('osc-theme/footer',$data);
+			$this->load->view('sw-member/login_page',$data);
+			//$this->load->view('osc-theme/login',$data);
+			//$this->load->view('osc-theme/footer',$data);
 			//$this->template->load('phpmu-one/template','phpmu-one/view_login',$data);
 		}
 	}
@@ -306,6 +306,147 @@ class Auth extends CI_Controller {
 	*/
 
 // 	}
+
+	function login_ajax(){
+		if( $this->input->is_ajax_request() ) {
+
+			$email = $this->input->post('email');
+				$password = hash("sha512", md5(strip_tags($this->input->post('password'))));
+				$cek = $this->db->query("SELECT * FROM rb_konsumen where email='".$this->db->escape_str($email)."' AND password='".$this->db->escape_str($password)."'AND status ='1' ");
+			    $row = $cek->row_array();
+			    $total = $cek->num_rows();
+				if ($total > 0){
+					$this->session->set_userdata(array('id_konsumen'=>$row['id_konsumen'],
+									   'username'=>$row['username'],
+									   'nama_lengkap'=>$row['nama_lengkap']));
+					//redirect('members');
+					echo json_encode(array('status'=>'ok')); 
+				}else{
+					//$data['title'] = 'Failed Login';
+					//$this->load->view('osc-theme/header',$data);
+					//$this->load->view('osc-theme/login_gagal',$data);
+					//$this->load->view('osc-theme/footer',$data);
+					//$this->template->load('phpmu-one/template','phpmu-one/view_login_error',$data);
+
+					echo json_encode(array('status'=>'fail' ));
+				}
+
+
+		}
+	} 
+
+	function forget_pass(){
+		if($this->input->is_ajax_request() ) {
+			$mail = 'sewudesain@gmail.com';
+			$email = $this->input->post('email');
+			$cek = $this->model_investasi->get_member_by_email($email)->num_rows();
+
+			if($cek >= 1 ) {
+				$info = $this->model_investasi->get_member_by_email($email)->row();
+				$token = $info->token;
+
+
+		$subject        = 'Confirm Reset Password!';
+        $message        = "<html><body>Hello! 
+        <br>click link to reset password  :<br>
+        <a href='".base_url('auth/confirm_resetpass')."/".$token."'>".base_url('auth/konfirm_resetpass')."/".$token."</a><br><br>
+
+        If the link doesn't work, you can copy the link above and paste it into your browser.
+        <br><br>
+            Admin, 
+        </body></html> \n";
+				//$kirim = kirim_email($email_tujuan,$subject,$message);
+        
+        $this->email->from('sewuwebmail@gmail.com', $ident['nama_website']);
+        $this->email->to($email);
+        $this->email->cc('');
+        $this->email->bcc('');
+        $this->email->subject($subject);
+        $this->email->message($message);
+        $this->email->set_mailtype("html");
+        $kirim = $this->email->send();
+
+        //smtp config
+        $config = Array(
+        'protocol' => 'smtp',
+        'smtp_host' => 'ssl://smtp.googlemail.com',
+        'smtp_port' => 465,
+        'smtp_user' => 'sewuwebmail@gmail.com',
+        'smtp_pass' => 'yeye1234',
+        'mailtype'  => 'html', 
+        'charset'   => 'iso-8859-1' );
+        $this->load->library('email', $config);
+        $this->email->set_newline("\r\n");
+
+        //$config['protocol'] = 'sendmail';
+        //$config['mailpath'] = '/usr/sbin/sendmail';
+        //$config['charset'] = 'utf-8';
+        //$config['wordwrap'] = TRUE;
+        //$config['mailtype'] = 'html';
+        $this->email->initialize($config);
+
+
+				echo json_encode(array('status'=>'ok','email'=>$email ));
+			} else {
+
+
+				echo json_encode(array('status'=>'failed','email'=>$cek) );
+
+			}
+		}
+	}
+
+	function confirm_resetpass($token) {
+		$cek = $this->model_investasi->get_by_token($token)->num_rows();
+		if ($cek >= 1 ){
+			$new_pass = generateRandomString(8);
+			$pass = hash("sha512", md5($new_pass));
+			$email = $this->model_investasi->get_by_token($token)->row()->email;
+			$this->model_investasi->updatepass($email,$pass);
+
+			$subject        = 'Password Reseted!';
+        $message        = "<html><body>Hello! 
+        <br>new  password  :<br>".$pass."'
+        <br><br>
+            Admin, 
+        </body></html> \n";
+				//$kirim = kirim_email($email_tujuan,$subject,$message);
+        
+        $this->email->from('sewuwebmail@gmail.com', $ident['nama_website']);
+        $this->email->to($email);
+        $this->email->cc('');
+        $this->email->bcc('');
+        $this->email->subject($subject);
+        $this->email->message($message);
+        $this->email->set_mailtype("html");
+        $kirim = $this->email->send();
+
+        //smtp config
+        $config = Array(
+        'protocol' => 'smtp',
+        'smtp_host' => 'ssl://smtp.googlemail.com',
+        'smtp_port' => 465,
+        'smtp_user' => 'sewuwebmail@gmail.com',
+        'smtp_pass' => 'yeye1234',
+        'mailtype'  => 'html', 
+        'charset'   => 'iso-8859-1' );
+        $this->load->library('email', $config);
+        $this->email->set_newline("\r\n");
+
+        //$config['protocol'] = 'sendmail';
+        //$config['mailpath'] = '/usr/sbin/sendmail';
+        //$config['charset'] = 'utf-8';
+        //$config['wordwrap'] = TRUE;
+        //$config['mailtype'] = 'html';
+		$this->email->initialize($config);
+		
+		redirect('auth/login');
+
+
+
+		}
+
+	} 
 
 	public function lupass(){
 		if (isset($_POST['lupa'])){

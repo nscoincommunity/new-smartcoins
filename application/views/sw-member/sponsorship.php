@@ -5,10 +5,7 @@
     <div class="tile row">
       <div class="col-md-12">
         <div id="external-events">
-
   <h4>DAILY PROFIT REPORT </h4>
-
-
   </p><hr>
   
   <!-- <div class="card mb-3 text-white bg-primary">
