@@ -56,11 +56,23 @@ class Model_auth extends CI_model{
         $this->email->set_mailtype("html");
         $this->email->send();
 
-        $config['protocol'] = 'sendmail';
-        $config['mailpath'] = '/usr/sbin/sendmail';
-        $config['charset'] = 'utf-8';
-        $config['wordwrap'] = TRUE;
-        $config['mailtype'] = 'html';
+        //smtp config
+        $config = Array(
+        'protocol' => 'smtp',
+        'smtp_host' => 'ssl://smtp.googlemail.com',
+        'smtp_port' => 465,
+        'smtp_user' => 'sewuwebmail@gmail.com',
+        'smtp_pass' => 'yeye1234',
+        'mailtype'  => 'html', 
+        'charset'   => 'iso-8859-1' );
+        $this->load->library('email', $config);
+        $this->email->set_newline("\r\n");
+
+        //$config['protocol'] = 'sendmail';
+        //$config['mailpath'] = '/usr/sbin/sendmail';
+        //$config['charset'] = 'utf-8';
+        //$config['wordwrap'] = TRUE;
+        //$config['mailtype'] = 'html';
         $this->email->initialize($config);
         
         
