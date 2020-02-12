@@ -119,7 +119,9 @@
                         <div class="contact-header">
                             
                             <h4 class="title"> Successfully Registration</h4>
-                            <span>Your account has been successfully created. please enter the member area to start investing with us!</span>
+                            <span>Your account has been successfully created. <br>
+                            Please check your email to get the membership activation link.
+Before you click the membership activation link, you cannot log in to the member area. <br><br>If you don't find the email in your inbox, also check the spam folder!</span>
                         </div>
 
                         <a href="<?php echo base_url('auth/login'); ?>" class="custom-button bg-1">login now</a>
