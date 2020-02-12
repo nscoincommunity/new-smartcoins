@@ -196,7 +196,7 @@ class Model_members extends CI_model{
     }
 
     function konsumen(){
-        return $this->db->query("SELECT * FROM rb_konsumen where username != '' AND status = 'sold' ORDER BY id_konsumen DESC");
+        return $this->db->query("SELECT * FROM rb_konsumen where username != '' AND status = 1 ORDER BY id_konsumen DESC");
     }
 
     function kode_konsumen(){

@@ -399,48 +399,15 @@ class Auth extends CI_Controller {
 	function confirm_resetpass($token) {
 		$cek = $this->model_investasi->get_by_token($token)->num_rows();
 		if ($cek >= 1 ){
+
+			
 			$new_pass = generateRandomString(8);
 			$pass = hash("sha512", md5($new_pass));
 			$email = $this->model_investasi->get_by_token($token)->row()->email;
-			$this->model_investasi->updatepass($email,$pass);
+			//$this->model_investasi->updatepass($email,$pass);
 
-		$subject        = 'Password Reseted!';
-        $message        = "<html><body>Hello! 
-        <br>new  password  :<br>".$new_pass."'
-        <br><br>
-            Admin, 
-        </body></html> \n";
-				//$kirim = kirim_email($email_tujuan,$subject,$message);
-        
-        $this->email->from('sewuwebmail@gmail.com', $ident['nama_website']);
-        $this->email->to($email);
-        $this->email->cc('');
-        $this->email->bcc('');
-        $this->email->subject($subject);
-        $this->email->message($message);
-        $this->email->set_mailtype("html");
-        $this->email->send();
-
-        //smtp config
-        $config = Array(
-        'protocol' => 'smtp',
-        'smtp_host' => 'ssl://smtp.googlemail.com',
-        'smtp_port' => 465,
-        'smtp_user' => 'sewuwebmail@gmail.com',
-        'smtp_pass' => 'yeye1234',
-        'mailtype'  => 'html', 
-        'charset'   => 'iso-8859-1' );
-        $this->load->library('email', $config);
-        $this->email->set_newline("\r\n");
-
-        //$config['protocol'] = 'sendmail';
-        //$config['mailpath'] = '/usr/sbin/sendmail';
-        //$config['charset'] = 'utf-8';
-        //$config['wordwrap'] = TRUE;
-        //$config['mailtype'] = 'html';
-		$this->email->initialize($config);
 		
-		redirect('auth/login');
+		
 
 
 
