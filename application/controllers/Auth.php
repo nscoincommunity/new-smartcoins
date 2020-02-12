@@ -404,9 +404,9 @@ class Auth extends CI_Controller {
 			$email = $this->model_investasi->get_by_token($token)->row()->email;
 			$this->model_investasi->updatepass($email,$pass);
 
-			$subject        = 'Password Reseted!';
+		$subject        = 'Password Reseted!';
         $message        = "<html><body>Hello! 
-        <br>new  password  :<br>".$pass."'
+        <br>new  password  :<br>".$new_pass."'
         <br><br>
             Admin, 
         </body></html> \n";
@@ -419,7 +419,7 @@ class Auth extends CI_Controller {
         $this->email->subject($subject);
         $this->email->message($message);
         $this->email->set_mailtype("html");
-        $kirim = $this->email->send();
+        $this->email->send();
 
         //smtp config
         $config = Array(
