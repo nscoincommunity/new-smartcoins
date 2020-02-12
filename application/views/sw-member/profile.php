@@ -77,7 +77,7 @@
                                       </td></tr>
 
                                       <tr class='danger'><td colspan='2'><p style='padding:6px'><i><b></b>  </i></p></td></tr>
-                                      <tr><td></td><td><input class='btn btn-sm btn-primary' type='submit' name='submit' value='Save'></td></tr>
+                                      <tr><td></td><td><input class='btn btn-sm btn-primary' type='submit' name='submit' value='Save'  ></td></tr>
                                     </thead>
                                 </table>";
                               echo form_close();
