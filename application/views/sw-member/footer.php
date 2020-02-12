@@ -187,7 +187,7 @@ $(document).ready(function(){
                 //alert(data.pesan);
                 //$('#kode_response').html(data.pesan);
                 if(data.status == 'benar') {
-                  swal("Good Job!","You will make a deposit $"+data.jumlah+" + Fee Maintenance $"+data.fee, "success");
+                  swal("Good Job!","You will make a deposit $"+data.jumlah+" + Fee $"+data.fee, "success");
                   $('[name=totaldepo]').val(data.total);
 
                   $('#submit-inv').prop('disabled', false );
