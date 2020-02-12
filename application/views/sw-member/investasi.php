@@ -35,7 +35,7 @@
                   <div class="col-md-8">
                     <div class="input-group">
                     <div class="input-group-prepend"><span class="input-group-text">$</span></div>
-                    <input class="form-control col-md-8" type="email" placeholder="Enter email address" value="<?php echo $this->model_investasi->get_setting_bonus()->fee_maintenance; ?>" disabled>
+                    <input class="form-control col-md-8" type="email" value="<?php echo $this->model_investasi->get_setting_bonus()->fee_maintenance; ?>" disabled>
                   </div>
                   </div>
                 </div>
