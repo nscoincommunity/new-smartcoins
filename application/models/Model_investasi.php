@@ -422,6 +422,21 @@ class Model_investasi extends CI_model {
     return $query;
   }
 
+  function get_total_depo($id) {
+    $this->db->select_sum('jumlah_inv');
+    $this->db->where('id_investor',$id);
+    $query = $this->db->get('sw_investasi');
+    return $query->row();
+  }
+
+  function get_total_bonus_dari($id) {
+    $this->db->select_sum('jumlah');
+    $this->db->where('dari_investor',$id);
+    $query = $this->db->get('sw_bonus');
+    return $query->row();
+
+  }
+
 
 
 
