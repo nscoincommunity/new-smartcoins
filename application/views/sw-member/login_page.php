@@ -22,7 +22,7 @@
         <form id="formlogin" class="login-form" >
           <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>MEMBER LOGIN</h3>
           <div class="form-group">
-            <label class="control-label">USERNAME</label>
+            <label class="control-label">EMAIL</label>
             <input id="usermail" class="form-control" type="text" required placeholder="Email" autofocus>
           </div>
           <div class="form-group">
