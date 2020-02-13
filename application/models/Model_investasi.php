@@ -445,6 +445,14 @@ class Model_investasi extends CI_model {
     return $query->row();
   }
 
+  function total_bonus_admin(){
+    $this->db->select_sum('jumlah');
+    $this->db->where('jenis','bonus admin');
+    $query = $this->db->get('sw_bonus');
+    return $query->row();
+
+  }
+
 
 
 

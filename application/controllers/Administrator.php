@@ -25,7 +25,8 @@ class Administrator extends CI_Controller {
 	}
 
 	function home(){
-		$this->template->load('administrator/template','administrator/view_home');
+		$data['bonus_admin'] = $this->model_investasi->total_bonus_admin();
+		$this->template->load('administrator/template','administrator/view_home',$data);
 	}
 
 	function identitaswebsite(){
@@ -1248,6 +1249,7 @@ class Administrator extends CI_Controller {
 	}
 
 	//controller Investasi
+
 
 	function investasi(){
 		cek_session_akses('investasi',$this->session->id_session);

@@ -35,11 +35,12 @@
             <?php } ?>
 
             </tbody>
-          </table>
-
-         
-
+            </table>
         </div>
+        <hr>
+        <p>Remark</p>
+        <ul><li> Deposit $ 100 to $ 999 Compensation bonus sponsorship level 1 - 2. </li>
+        <li>Deposit $ 1000 to Unlimited sponsorship bonus sponsorship level 1 - 5</li> </ul>
     </div>
   </div>
 </div>

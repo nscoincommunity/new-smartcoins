@@ -30,7 +30,7 @@
                             <table class='table table-condensed table-bordered'>
                             <tbody>
                               <tr><th scope='row'>Kota</th> <td><?php echo $rows['kota']?></td></tr>
-                              <tr><th width='130px' scope='row'>Provinsi</th> <td><?php echo $rows['provinsi']?></td></tr>
+                              <tr><th width='130px' scope='row'>Negara</th> <td><?php echo $rows['country']?></td></tr>
                               <tr><th scope='row'>No Hp</th> <td><?php echo $rows['no_hp']?></td></tr>
                               <tr><th scope='row'>Nama Bank</th> <td><?php echo $rows['nama_bank']?></td></tr>
                               <tr><th scope='row'>No Rekening</th> <td><?php echo $rows['no_rekening']?></td></tr>

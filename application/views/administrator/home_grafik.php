@@ -31,11 +31,14 @@
     <div class="box-header">
     <i class="fa fa-th-list"></i>
     <h3 class="box-title">Info</h3>
+    
         <div class="box-tools pull-right">
            <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
             <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
         </div>
         </div>
+
+        <h3>Total Bonus Admin : <?php echo uang_usd($bonus_admin->jumlah); ?></h3>
 
 <div class="box-body chat" id="chat-box">
     <script src="<?php echo base_url(); ?>asset/admin/plugins/highchart/highcharts.js"></script>

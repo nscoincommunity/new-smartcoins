@@ -120,95 +120,139 @@ class Investasi extends CI_Controller {
         $this->model_investasi->insert_b_admin($databonusadmin);
 
     
+
       //jika id sponsor tidak sama dengan 0, berikan bonus level 1
-    if ($i_sponsor != 0) {
-        //bonus level 1
-        $persen_l1 = $setting_bonus->level1 / 100;
-        $bonus_l1 = $persen_l1 * $jml_i;
-        $databonus_l1 = array('id_penerima' => $i_sponsor,
-                              'jumlah' => $bonus_l1,
-                              'tanggal' => date('Y-m-d'),
-                              'jenis' => 'bonus level 1',
-                            'dari_investor'=> $i_investor,
-                          'dari_investasi' => $i_investasinya);
-        $this->model_investasi->insert_b_level1($databonus_l1);
+  if ($i_sponsor != 0) {
 
-        // cari L2
-        $cari_l2 = $this->model_investasi->get_id_memberx($i_sponsor);
-        $l2_row = $cari_l2->row();
-        $id_level2 = $l2_row->sponsor;
+      //Deposit $ 100 to $ 999 Compensation bonus sponsorship level 1 - 2
+        if ($jml_i >= 100 && $jml_i <= 999 ) {
 
-        if ($id_level2 != 0) {
-          //bonus level 2
-          $persen_l2 = $setting_bonus->level2 / 100;
-          $bonus_l2 = $persen_l2 * $jml_i;
-          $databonus_l2 = array('id_penerima' => $id_level2,
-                                'jumlah' => $bonus_l2,
-                                'tanggal' => date('Y-m-d'),
-                                'jenis' => 'bonus level 2',
-                              'dari_investor'=> $i_investor,
-                          'dari_investasi' => $i_investasinya);
-          $this->model_investasi->insert_b_level2($databonus_l2);
+                          //bonus level 1
+                      $persen_l1 = $setting_bonus->level1 / 100;
+                      $bonus_l1 = $persen_l1 * $jml_i;
+                      $databonus_l1 = array('id_penerima' => $i_sponsor,
+                                            'jumlah' => $bonus_l1,
+                                            'tanggal' => date('Y-m-d'),
+                                            'jenis' => 'bonus level 1',
+                                          'dari_investor'=> $i_investor,
+                                        'dari_investasi' => $i_investasinya);
+                      $this->model_investasi->insert_b_level1($databonus_l1);
 
-          // cari L3
-          $cari_l3 = $this->model_investasi->get_id_memberx($id_level2);
-          $l3_row = $cari_l3->row();
-          $id_level3 = $l3_row->sponsor;
+                      // cari L2
+                      $cari_l2 = $this->model_investasi->get_id_memberx($i_sponsor);
+                      $l2_row = $cari_l2->row();
+                      $id_level2 = $l2_row->sponsor;
 
-          if($id_level3 != 0) {
-            //bonus level 3
-            $persen_l3 = $setting_bonus->level3 / 100;
-            $bonus_l3  = $persen_l3 * $jml_i;
-            $databonus_l3 = array('id_penerima' => $id_level3,
-                                  'jumlah' => $bonus_l3,
-                                  'tanggal' => date('Y-m-d'),
-                                  'jenis' => 'bonus level 3',
-                                'dari_investor'=> $i_investor,
-                          'dari_investasi' => $i_investasinya);
-            $this->model_investasi->insert_b_level3($databonus_l3);
+                      if ($id_level2 != 0) {
+                        //bonus level 2
+                        $persen_l2 = $setting_bonus->level2 / 100;
+                        $bonus_l2 = $persen_l2 * $jml_i;
+                        $databonus_l2 = array('id_penerima' => $id_level2,
+                                              'jumlah' => $bonus_l2,
+                                              'tanggal' => date('Y-m-d'),
+                                              'jenis' => 'bonus level 2',
+                                            'dari_investor'=> $i_investor,
+                                        'dari_investasi' => $i_investasinya);
+                        $this->model_investasi->insert_b_level2($databonus_l2);
 
-            //cari L4
-            $cari_l4 = $this->model_investasi->get_id_memberx($id_level3);
-            $l4_row = $cari_l4->row();
-            $id_level4 = $l4_row->sponsor;
+                      }
 
-            if($id_level4 != 0) {
-              //bonus Level 4
-              $persen_l4 = $setting_bonus->level4 / 100;
-              $bonus_l4 = $persen_l4 * $jml_i;
-              $databonus_l4 = array('id_penerima' => $id_level4,
-                                    'jumlah' => $bonus_l4,
-                                    'tanggal' => date('Y-m-d'),
-                                    'jenis' => 'bonus level 4',
-                                  'dari_investor'=> $i_investor,
-                          'dari_investasi' => $i_investasinya);
-              $this->model_investasi->insert_b_level4($databonus_l4);
 
-              //cari L5
-            $cari_l5 = $this->model_investasi->get_id_memberx($id_level4);
-            $l5_row = $cari_l5->row();
-            $id_level5 = $l5_row->sponsor;
 
-            if($id_level5 != 0){
-              //bonus level 5
-              $persen_l5 = $setting_bonus->level5 / 100;
-              $bonus_l5 = $persen_l5 * $jml_i;
-              $databonus_l5 = array('id_penerima'=> $id_level5,
-                                    'jumlah' => $bonus_l5,
-                                    'tanggal' => date('Y-m-d'),
-                                    'jenis'=>'bonus level 5',
-                                  'dari_investor'=> $i_investor,
-                          'dari_investasi' => $i_investasinya);
-              $this->model_investasi->insert_b_level5($databonus_l5);
+          } else {
 
-              }
-            }
-          }
-        }
-    }
+                      //bonus level 1
+                      $persen_l1 = $setting_bonus->level1 / 100;
+                      $bonus_l1 = $persen_l1 * $jml_i;
+                      $databonus_l1 = array('id_penerima' => $i_sponsor,
+                                            'jumlah' => $bonus_l1,
+                                            'tanggal' => date('Y-m-d'),
+                                            'jenis' => 'bonus level 1',
+                                          'dari_investor'=> $i_investor,
+                                        'dari_investasi' => $i_investasinya);
+                      $this->model_investasi->insert_b_level1($databonus_l1);
+
+                      // cari L2
+                      $cari_l2 = $this->model_investasi->get_id_memberx($i_sponsor);
+                      $l2_row = $cari_l2->row();
+                      $id_level2 = $l2_row->sponsor;
+
+                      if ($id_level2 != 0) {
+                        //bonus level 2
+                        $persen_l2 = $setting_bonus->level2 / 100;
+                        $bonus_l2 = $persen_l2 * $jml_i;
+                        $databonus_l2 = array('id_penerima' => $id_level2,
+                                              'jumlah' => $bonus_l2,
+                                              'tanggal' => date('Y-m-d'),
+                                              'jenis' => 'bonus level 2',
+                                            'dari_investor'=> $i_investor,
+                                        'dari_investasi' => $i_investasinya);
+                        $this->model_investasi->insert_b_level2($databonus_l2);
+
+
+                        // cari L3
+                        $cari_l3 = $this->model_investasi->get_id_memberx($id_level2);
+                        $l3_row = $cari_l3->row();
+                        $id_level3 = $l3_row->sponsor;
+
+                        if($id_level3 != 0) {
+                          //bonus level 3
+                          $persen_l3 = $setting_bonus->level3 / 100;
+                          $bonus_l3  = $persen_l3 * $jml_i;
+                          $databonus_l3 = array('id_penerima' => $id_level3,
+                                                'jumlah' => $bonus_l3,
+                                                'tanggal' => date('Y-m-d'),
+                                                'jenis' => 'bonus level 3',
+                                              'dari_investor'=> $i_investor,
+                                        'dari_investasi' => $i_investasinya);
+                          $this->model_investasi->insert_b_level3($databonus_l3);
+
+                          //cari L4
+                          $cari_l4 = $this->model_investasi->get_id_memberx($id_level3);
+                          $l4_row = $cari_l4->row();
+                          $id_level4 = $l4_row->sponsor;
+
+                          if($id_level4 != 0) {
+                            //bonus Level 4
+                            $persen_l4 = $setting_bonus->level4 / 100;
+                            $bonus_l4 = $persen_l4 * $jml_i;
+                            $databonus_l4 = array('id_penerima' => $id_level4,
+                                                  'jumlah' => $bonus_l4,
+                                                  'tanggal' => date('Y-m-d'),
+                                                  'jenis' => 'bonus level 4',
+                                                'dari_investor'=> $i_investor,
+                                        'dari_investasi' => $i_investasinya);
+                            $this->model_investasi->insert_b_level4($databonus_l4);
+
+                              //cari L5
+                            $cari_l5 = $this->model_investasi->get_id_memberx($id_level4);
+                            $l5_row = $cari_l5->row();
+                            $id_level5 = $l5_row->sponsor;
+
+                            if($id_level5 != 0){
+                              //bonus level 5
+                              $persen_l5 = $setting_bonus->level5 / 100;
+                              $bonus_l5 = $persen_l5 * $jml_i;
+                              $databonus_l5 = array('id_penerima'=> $id_level5,
+                                                    'jumlah' => $bonus_l5,
+                                                    'tanggal' => date('Y-m-d'),
+                                                    'jenis'=>'bonus level 5',
+                                                  'dari_investor'=> $i_investor,
+                                          'dari_investasi' => $i_investasinya);
+                              $this->model_investasi->insert_b_level5($databonus_l5);
+                            
+                            } // close level 5
+                            
+                        } // close level 4
+                   } // close level 3
+               } // close level 2
+            } // else lebih dari 999 
+
+      } //close if sponsor !=''
     
-		redirect('administrator/investasi');
-  }
+    redirect('administrator/investasi');
+    
+  } // close methode 
 
   
 	function delete_investasi($id) {
