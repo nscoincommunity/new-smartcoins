@@ -29,7 +29,7 @@
                                       <tr><td><b>Address</b></td>         <td>$row[alamat_lengkap]</td></tr>
 
                                       <tr><td><b>City</b></td>                   <td>$row[kota]</td></tr>
-                                      <tr><td><b>Country</b></td>               <td>$row[provinsi]</td></tr>
+                                      <tr><td><b>Country</b></td>               <td>$row[country]</td></tr>
 
                                       <tr><td><b>Bank Name</b></td>              <td>$row[nama_bank]</td></tr>
                                       <tr><td><b>Account </b></td>            <td>$row[no_rekening]</td></tr>
@@ -62,7 +62,7 @@
                                       <tr><td><b>Address</b></td>         <td><input class='required form-control' type='text' name='g' value='$row[alamat_lengkap]'></td></tr>
 
                                       <tr><td><b>City</b></td>                   <td><input class='required form-control' type='text' name='i' value='$row[kota]'></td></tr>
-                                      <tr><td><b>Country</b></td>               <td><input class='required form-control' type='text' name='j' value='$row[provinsi]'></td></tr>
+                                      <tr><td><b>Country</b></td>               <td><input class='required form-control' type='text' name='country' value='$row[country]'></td></tr>
                                       <tr><td><b>Phone Number</b></td>                  <td><input style='width:40%' class='required number form-control' type='number' name='k' value='$row[no_hp]'></td></tr>
                                       <tr><td><b>Bank Name</b></td>              <td><input style='width:60%; color:red' class='required form-control' type='text' name='l' value='$row[nama_bank]' ></td></tr>
                                       <tr><td><b>Account Number</b></td>            <td><input style='width:60%; color:red' class='required number form-control' type='number' name='m' value='$row[no_rekening]' ></td></tr>

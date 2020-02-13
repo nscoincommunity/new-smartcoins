@@ -299,7 +299,7 @@ class Model_members extends CI_model{
                             'alamat_lengkap'=>$this->db->escape_str(strip_tags($this->input->post('g'))),
                             'ahli_waris'=>$this->db->escape_str(strip_tags($this->input->post('h'))),
                             'kota'=>$this->db->escape_str(strip_tags($this->input->post('i'))),
-                            'provinsi'=>$this->db->escape_str(strip_tags($this->input->post('j'))),
+                            'country'=>$this->db->escape_str(strip_tags($this->input->post('country'))),
                             'rekning_virtual'=>$this->db->escape_str(strip_tags($this->input->post('vrek'))),
                             'no_hp'=>$this->db->escape_str(strip_tags($this->input->post('k'))));
         }else{
@@ -311,7 +311,7 @@ class Model_members extends CI_model{
                             'alamat_lengkap'=>$this->db->escape_str(strip_tags($this->input->post('g'))),
                             'ahli_waris'=>$this->db->escape_str(strip_tags($this->input->post('h'))),
                             'kota'=>$this->db->escape_str(strip_tags($this->input->post('i'))),
-                            'provinsi'=>$this->db->escape_str(strip_tags($this->input->post('j'))),
+                            'country'=>$this->db->escape_str(strip_tags($this->input->post('country'))),
                             'rekning_virtual'=>$this->db->escape_str(strip_tags($this->input->post('vrek'))),
                             'no_hp'=>$this->db->escape_str(strip_tags($this->input->post('k'))));
         }
@@ -330,7 +330,8 @@ class Model_members extends CI_model{
                             'alamat_lengkap'=>$this->db->escape_str(strip_tags($this->input->post('g'))),
                             'ahli_waris'=>$this->db->escape_str(strip_tags($this->input->post('h'))),
                             'kota'=>$this->db->escape_str(strip_tags($this->input->post('i'))),
-                            'provinsi'=>$this->db->escape_str(strip_tags($this->input->post('j'))),
+                            'provinsi'=>'-',
+                            'country' => $this->db->escape_str(strip_tags($this->input->post('country'))),
                             'no_hp'=>$this->db->escape_str(strip_tags($this->input->post('k'))),
                             'nama_bank'=>$this->db->escape_str(strip_tags($this->input->post('l'))),
                             'no_rekening'=>$this->db->escape_str(strip_tags($this->input->post('m'))),
@@ -345,7 +346,8 @@ class Model_members extends CI_model{
                             'alamat_lengkap'=>$this->db->escape_str(strip_tags($this->input->post('g'))),
                             'ahli_waris'=>$this->db->escape_str(strip_tags($this->input->post('h'))),
                             'kota'=>$this->db->escape_str(strip_tags($this->input->post('i'))),
-                            'provinsi'=>$this->db->escape_str(strip_tags($this->input->post('j'))),
+                            'provinsi'=>'-',
+                            'country' => $this->db->escape_str(strip_tags($this->input->post('country'))),
                             'no_hp'=>$this->db->escape_str(strip_tags($this->input->post('k'))),
                             'nama_bank'=>$this->db->escape_str(strip_tags($this->input->post('l'))),
                             'no_rekening'=>$this->db->escape_str(strip_tags($this->input->post('m'))),

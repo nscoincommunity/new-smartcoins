@@ -116,7 +116,7 @@
 
                                                 <input type='text' class='required form-control' name='kotanya' id='kotaa' required placeholder='City'></div> <div class='form-group'>
 
-                                                <input type='text' class='required form-control' name='provinsinya' placeholder='Country'></div> <div class='form-group'>
+                                                <input type='text' class='required form-control' name='country' placeholder='Country'></div> <div class='form-group'>
 
                                                 <input type='text' class='required form-control' name='namabank' placeholder='Bank Name'></div> <div class='form-group'>
 

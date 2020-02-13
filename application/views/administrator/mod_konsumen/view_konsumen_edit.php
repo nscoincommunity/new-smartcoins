@@ -30,7 +30,7 @@
                             <table class='table table-condensed table-bordered'>
                             <tbody>
                               <tr><th scope='row'>Kota</th>                         <td><input class='form-control' type='text' name='i' value='$rows[kota]'></td></tr>
-                              <tr><th width='130px' scope='row'>Provinsi</th>       <td><input class='form-control' type='text' name='j' value='$rows[provinsi]'></td></tr>
+                              <tr><th width='130px' scope='row'>Country</th>       <td><input class='form-control' type='text' name='country' value='$rows[country]'></td></tr>
                               <tr><th scope='row'>No Hp</th>                        <td><input class='form-control' type='number' name='k' value='$rows[no_hp]'></td></tr>
                               <tr><th scope='row'>Nama Bank</th>                    <td><input class='form-control' type='text' name='l' value='$rows[nama_bank]'></td></tr>
                               <tr><th scope='row'>No Rekening</th>                  <td><input class='form-control' type='number' name='m' value='$rows[no_rekening]'></td></tr>

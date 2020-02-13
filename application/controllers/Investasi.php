@@ -634,20 +634,59 @@ function cek_saldo() {
 
   }
 
-  function sponsorship() {
+  function level_1() {
     cek_session_members();
     $id = $this->session->userdata('id_konsumen');
     $data['sp_level1'] = $this->model_investasi->get_sponsor($id)->result_array();
     
-    foreach ($sp_level1 as $level1) {
-      
-      $data['sp_level2'] = $this->model_investasi->get_sponsor($level1['id_konsumen'])->result_array();
-    }
-
     $this->load->view('sw-member/header',$data);
-    $this->load->view('sw-member/sponsorship',$data);
+    $this->load->view('sw-member/level_1',$data);
     $this->load->view('sw-member/footer',$data);
   }
+
+  function level_2($id_upline) {
+    cek_session_members();
+    $id = $this->session->userdata('id_konsumen');
+    $data['sp_level2'] = $this->model_investasi->get_sponsor($id_upline)->result_array();
+    
+    $this->load->view('sw-member/header',$data);
+    $this->load->view('sw-member/level_2',$data);
+    $this->load->view('sw-member/footer',$data);
+  }
+
+  function level_3($id_upline) {
+    cek_session_members();
+    $id = $this->session->userdata('id_konsumen');
+    $data['sp_level3'] = $this->model_investasi->get_sponsor($id_upline)->result_array();
+    
+    $this->load->view('sw-member/header',$data);
+    $this->load->view('sw-member/level_3',$data);
+    $this->load->view('sw-member/footer',$data);
+  }
+
+
+  function level_4($id_upline) {
+    cek_session_members();
+    $id = $this->session->userdata('id_konsumen');
+    $data['sp_level4'] = $this->model_investasi->get_sponsor($id_upline)->result_array();
+    
+    $this->load->view('sw-member/header',$data);
+    $this->load->view('sw-member/level_4',$data);
+    $this->load->view('sw-member/footer',$data);
+  }
+
+
+  function level_5($id_upline) {
+    cek_session_members();
+    $id = $this->session->userdata('id_konsumen');
+    $data['sp_level5'] = $this->model_investasi->get_sponsor($id_upline)->result_array();
+    
+    $this->load->view('sw-member/header',$data);
+    $this->load->view('sw-member/level_5',$data);
+    $this->load->view('sw-member/footer',$data);
+  }
+
+
 
 
 

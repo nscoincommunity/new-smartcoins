@@ -7,7 +7,7 @@
         <div id="external-events">
 
   <h4>List Bonus</h4><p>
- <div class="card mb-3 text-white bg-primary">
+ <!-- <div class="card mb-3 text-white bg-primary">
   <div class="card-body">
         <blockquote class="card-blockquote">
           <?php echo '<strong>Total Bonus :</strong> '.uang_usd($this->model_investasi->jumlah_bonus_per_member($this->session->userdata('id_konsumen'))->jumlah); ?>
@@ -44,7 +44,7 @@
             </tbody>
           </table>
 
-        </div>
+        </div> -->
     </div>
   </div>
 </div>
