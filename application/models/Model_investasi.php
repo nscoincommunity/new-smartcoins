@@ -388,8 +388,11 @@ class Model_investasi extends CI_model {
   }
 
   function bonus_by_member($id) {
+    $this->db->select('*');
+    $this->db->from('sw_bonus');
+    $this->db->join('rb_konsumen','sw_bonus.dari_investor=rb_konsumen.id_konsumen','left');
     $this->db->where('id_penerima',$id);
-    $query = $this->db->get('sw_bonus');
+    $query = $this->db->get();
     return $query->result_array();
 
   }
@@ -470,6 +473,12 @@ class Model_investasi extends CI_model {
     $query = $this->db->get('sw_bonus');
     return $query->row();
 
+  }
+
+  function cek_edit_profile($id_ini){
+    $this->db->where('id_konsumen',$id_ini);
+    $query = $this->db->get('rb_konsumen');
+    return $query->row();
   }
 
 

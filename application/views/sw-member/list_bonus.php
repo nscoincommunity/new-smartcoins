@@ -6,15 +6,8 @@
       <div class="col-md-12">
         <div id="external-events">
 
-  <h4>List Bonus</h4><p>
- <!-- <div class="card mb-3 text-white bg-primary">
-  <div class="card-body">
-        <blockquote class="card-blockquote">
-          <?php echo '<strong>Total Bonus :</strong> '.uang_usd($this->model_investasi->jumlah_bonus_per_member($this->session->userdata('id_konsumen'))->jumlah); ?>
-        </blockquote>
-      </div>
-  </div>
-
+  <h4>BONUS REPORT</h4><p>
+ 
 
   
   
@@ -22,23 +15,25 @@
             <thead>
               <tr>
                 
-                <th>Date</th>
-                <th> Amount </th>
-                <th> Category</th>
+                <th>DATE</th>
+                <th>AMOUNT</th>
+                <th>CATEGORY</th>
+                <th>FROM (USERNAME)</th>
+
               </tr>
             </thead>
             <tbody>
-            <?php 
-            // $harike = $jum;
-            $no=1; foreach ($bonuss as $row) { ?>
+            <?php
+             foreach ($listbonus as $row) { ?>
               <tr>
                 <td><?php echo tgl_view($row['tanggal']); ?></td>
-                <td> <?php echo number_format($row['jumlah'],0,",",".")  ?> </td>
-                <td><?php echo $row['jenis']; ?></td>
+                <td> <?php echo uang_usd($row['jumlah']); ?> </td>
+                <td><?php echo strtoupper($row['jenis']); ?></td>
+                 <td><?php echo $row['username']; ?></td>
+
               </tr>
             <?php
-            $harike = $harike - 1;
-            $no++;
+            
             } ?>
 
             </tbody>

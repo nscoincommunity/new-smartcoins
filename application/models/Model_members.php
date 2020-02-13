@@ -290,7 +290,8 @@ class Model_members extends CI_model{
 
     function profile_update($id){
         if (trim($this->input->post('a')) != ''){
-            $datadbd = array('password'=>hash("sha512", md5($this->input->post('a'))),
+            $datadbd = array('edit_profile'=> 1,
+                            'password'=>hash("sha512", md5($this->input->post('a'))),
                             'nama_lengkap'=>$this->db->escape_str(strip_tags($this->input->post('b'))),
                             'email'=>$this->db->escape_str(strip_tags($this->input->post('c'))),
                             'jenis_kelamin'=>$this->db->escape_str($this->input->post('d')),
@@ -303,7 +304,8 @@ class Model_members extends CI_model{
                             'rekning_virtual'=>$this->db->escape_str(strip_tags($this->input->post('vrek'))),
                             'no_hp'=>$this->db->escape_str(strip_tags($this->input->post('k'))));
         }else{
-           $datadbd = array('nama_lengkap'=>$this->db->escape_str(strip_tags($this->input->post('b'))),
+           $datadbd = array('edit_profile' => 1,
+                            'nama_lengkap'=>$this->db->escape_str(strip_tags($this->input->post('b'))),
                             'email'=>$this->db->escape_str(strip_tags($this->input->post('c'))),
                             'jenis_kelamin'=>$this->db->escape_str($this->input->post('d')),
                             'tanggal_lahir'=>$this->db->escape_str($this->input->post('e')),

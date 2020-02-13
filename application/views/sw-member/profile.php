@@ -16,6 +16,7 @@
             <?php
               echo "
                     <h4>Profile Detail</h4>
+
                        </p>";
                               echo "<table class='table table-hover table-condensed'>
                                     <thead>
@@ -44,7 +45,13 @@
           <div class="tile user-settings">
             
             <?php
-              echo "<p class='sidebar-title'><span class='glyphicon glyphicon-volume-up'></span> Edit Profile</p>
+              $id_ini = $this->session->userdata('id_konsumen');
+              $edit_profile = $this->model_investasi->cek_edit_profile($id_ini)->edit_profile;
+              if ($edit_profile != 1 ) {
+            
+              echo "<h4> Edit Profile</h4>
+              <p><strong>WARNING : You only have one chance to edit your profile data. After that this form is no longer active.</p>
+
                     ";
                               if ($row['posisi']=='0'){ $penempatan = 'Kiri'; }elseif($row['posisi']=='1'){ $penempatan = 'Kanan'; }
                               $attributes = array('id' => 'formku','class'=>'form-horizontal','role'=>'form');
@@ -62,7 +69,7 @@
                                       <tr><td><b>Address</b></td>         <td><input class='required form-control' type='text' name='g' value='$row[alamat_lengkap]'></td></tr>
 
                                       <tr><td><b>City</b></td>                   <td><input class='required form-control' type='text' name='i' value='$row[kota]'></td></tr>
-                                      <tr><td><b>Country</b></td>               <td><input class='required form-control' type='text' name='country' value='$row[country]'></td></tr>
+                                      <tr><td><b>Province</b></td>               <td><input class='required form-control' type='text' name='j' value='$row[provinsi]'></td></tr>
                                       <tr><td><b>Phone Number</b></td>                  <td><input style='width:40%' class='required number form-control' type='number' name='k' value='$row[no_hp]'></td></tr>
                                       <tr><td><b>Bank Name</b></td>              <td><input style='width:60%; color:red' class='required form-control' type='text' name='l' value='$row[nama_bank]' ></td></tr>
                                       <tr><td><b>Account Number</b></td>            <td><input style='width:60%; color:red' class='required number form-control' type='number' name='m' value='$row[no_rekening]' ></td></tr>
@@ -72,12 +79,16 @@
                                       <tr><td><b>Virtual Account / Crypto Payment </b></td>              <td><input style='color:red' class='required form-control' type='text' name='vrek' value='$row[rekning_virtual]' ></td></tr>
 
                                       </td></tr>
-
-                                      <tr class='danger'><td colspan='2'><p style='padding:6px'><i><b></b>  </i></p></td></tr>
-                                      <tr><td></td><td><input class='btn btn-sm btn-primary' type='submit' name='submit' value='Save'  ></td></tr>
+                                      <tr><td></td><td>
+                                      <input class='btn btn-sm btn-primary' type='submit' name='submit' value='Save'>
+                                      </td></tr>
                                     </thead>
                                 </table>";
                               echo form_close();
+              } else {
+                echo "<p>You have already edited a profile once.</p>";
+              }
+
             ?>
           </div>
         </div>
