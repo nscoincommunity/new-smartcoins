@@ -637,7 +637,9 @@ function cek_saldo() {
   function level_1() {
     cek_session_members();
     $id = $this->session->userdata('id_konsumen');
+
     $data['sp_level1'] = $this->model_investasi->get_sponsor($id)->result_array();
+    $data['tot_bonus_l1'] = $this->model_investasi->total_bonus($id,$jenis='bonus level 1');
     
     $this->load->view('sw-member/header',$data);
     $this->load->view('sw-member/level_1',$data);

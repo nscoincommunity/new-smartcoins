@@ -27,7 +27,9 @@
                 <td> <?php echo $row['tanggal_daftar'] ?> </td>
                 <td> <a href="<?php echo base_url('investasi/level_5')."/".$row['id_konsumen']; ?>" > <?php echo $row['username'] ?> </a> </td>
                 <td> <?php $depo = $this->model_investasi->get_total_depo($row['id_konsumen']); echo uang_usd($depo->jumlah_inv);  ?></td>
-                <td> <?php $bonus = $this->model_investasi->get_total_bonus_dari($row['id_konsumen']); echo uang_usd($bonus->jumlah);  ?> </td>
+                <td> <?php $penerima = $this->session->userdata('id_konsumen'); 
+                           $bonus = $this->model_investasi->get_total_bonus_dari($row['id_konsumen'],$penerima); 
+                           echo uang_usd($bonus->jumlah);   ?> </td>
                 <td> <?php echo $row['country'] ?> </td>
               </tr>
             <?php } ?>
