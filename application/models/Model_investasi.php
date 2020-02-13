@@ -105,6 +105,18 @@ class Model_investasi extends CI_model {
     
   }
 
+  function daily_rod($rod_harian,$id_inv,$id_i) {
+    $tanggal  = date('Y-m-d');
+    $datadb   = array ('id_investor' => $id_inv,
+                        'id_investasi' => $id_i,
+                       'tanggal' => $tanggal,
+                       'jumlah_rod' => $rod_harian,
+                       'status' => 0);
+    $this->db->insert('sw_rod',$datadb);
+    
+  }
+
+
   function daftar_investasi($id){
     $this->db->select('sw_investasi.status AS statusnya,sw_investasi.kode_unik AS kode_uniknya,sw_investasi.tgl_dibuat AS tgl_dibuatnya,sw_investasi.tgl_acc AS tgl_accnya,sw_investasi.tgl_mulai_hitung AS tgl_mulai_hitungnya,sw_investasi.tgl_akhir_hitung AS tgl_akhir_hitungnya,sw_investasi.id_inv AS idnya,sw_tarik_modal.tgl_ditransfer AS ditransfernya,sw_investasi.jumlah_inv AS jumlahnya');
     $this->db->from('sw_investasi');
@@ -129,8 +141,15 @@ class Model_investasi extends CI_model {
     $this->db->select_sum('jumlah');
     $this->db->where('id_member',$id);
     $query = $this->db->get('sw_profit');
-    return $query->result_array();
+    return $query->row();
   }
+
+  function return_of_deposit($id){
+    $this->db->select_sum('jumlah_rod');
+    $this->db->where('id_investor',$id);
+    $query = $this->db->get('sw_rod');
+    return $query->row();
+  } 
 
   function jumlah_bonus_per_member($id){
     $this->db->select_sum('jumlah');
@@ -223,7 +242,7 @@ class Model_investasi extends CI_model {
     $this->db->select_sum('jumlah_diminta');
     $this->db->where('id_member',$id);
     $query = $this->db->get('sw_withdraw');
-    return $query->result_array();
+    return $query->row();
   }
   
   function harike($id_member, $id_inves, $tanggal){

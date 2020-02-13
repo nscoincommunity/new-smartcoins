@@ -157,8 +157,6 @@ class Investasi extends CI_Controller {
 
                       }
 
-
-
           } else {
 
                       //bonus level 1
@@ -242,7 +240,6 @@ class Investasi extends CI_Controller {
                               $this->model_investasi->insert_b_level5($databonus_l5);
                             
                             } // close level 5
-                            
                         } // close level 4
                    } // close level 3
                } // close level 2
@@ -253,6 +250,7 @@ class Investasi extends CI_Controller {
     redirect('administrator/investasi');
     
   } // close methode 
+
 
   
 	function delete_investasi($id) {
@@ -278,12 +276,26 @@ class Investasi extends CI_Controller {
 
       if ($tgl_hitung <= $today && $tgl_stop >= $today) {
           $persen_harian = $this->model_investasi->get_setting_bonus()->persen_harian;
+          
+          $masa_kontrak = $this->model_investasi->get_setting_bonus()->masa_kontrak;
+          $masa_hold = $this->model_investasi->get_setting_bonus()->hold;
+          $pembagi_rod = $masa_kontrak - $masa_hold;
+
           $profit = $jumlah * $persen_harian /100; 
+          $rod_harian = $jumlah / $pembagi_rod;
+
           // cekdata -> memastikan setiap paket investasi hanya sekali dpt profit dalam sehari.
-          $cekdata = $this->db->query("SELECT * FROM sw_profit 
+          $cekprofit = $this->db->query("SELECT * FROM sw_profit 
                      where id_investasti='".$id_i."' AND tanggal='".$today."' ")->num_rows();
-          if ($cekdata == 0 ) {
-            $this->model_investasi->bagi_hasil($profit,$id_inv,$id_i);
+
+          $cekrod = $this->db->query("SELECT * FROM sw_rod 
+                     where id_investasi='".$id_i."' AND tanggal='".$today."' ")->num_rows();
+
+
+          if ($cekprofit == 0 && $cekrod == 0 ) {
+            $this->model_investasi->bagi_hasil($profit,$id_inv,$id_i); 
+            $this->model_investasi->daily_rod($rod_harian,$id_inv,$id_i);
+
             if ($today == $tgl_stop ) { 
               $this->model_investasi->update_status($id_i);
             } 
@@ -355,21 +367,13 @@ class Investasi extends CI_Controller {
                             'tgl_diminta' => $tgl,
                             'status' => 0
         );
+        
+        $totprofit = $this->model_investasi->jumlah_profit_per_member($id_member)->jumlah;
+        $rod = $this->model_investasi->return_of_deposit($id_member)->jumlah_rod;
+        $bonus = $this->model_investasi->jumlah_bonus_per_member($id_member)->jumlah;
+        $totwd = $this->model_investasi->jumlah_wd_per_member($id_member)->jumlah_diminta;
 
-        $tot = $this->model_investasi->jumlah_profit_per_member($id_member);
-          foreach ($tot as $row) { $profit = $row['jumlah']; }
-          $totwd = $this->model_investasi->jumlah_wd_per_member($id_member);
-          foreach ($totwd as $rows) { $wd = $rows['jumlah_diminta']; } 
-          
-          $inv  = $this->model_investasi->jumlah_inv_balik($id_member);
-          foreach ($inv as $balik) {
-            $modal = $balik['jumlah_inv'];
-          }
-
-          $bonus = $this->model_investasi->jumlah_bonus_per_member($id_member)->jumlah; 
-
-          $subsaldo = $row['jumlah'] + $modal + $bonus;
-          $saldo = $subsaldo - $rows['jumlah_diminta'];
+        $saldo = $totprofit + $rod + $bonus - $totwd;
 
         if( $jumlah > $saldo ) {
           echo "<script>
@@ -377,24 +381,23 @@ class Investasi extends CI_Controller {
           window.location=('".base_url()."investasi/withdraw')
 
           </script> ";
-        } elseif ($jumlah < 10 ) {
+        } elseif ($jumlah < 50 ) {
           echo "<script>
-          window.alert('Minimum Withdraw $10' );
+          window.alert('Minimum Withdraw $50' );
           window.location=('".base_url()."investasi/withdraw')
 
           </script> ";
 
         } 
         else  {
-
           $this->model_investasi->insert_withdraw($datainput);
           
            $set = $this->db->query("SELECT * FROM rb_setting where aktif='Y'")->row_array();
-              $idadmin = $this->db->query("SELECT * FROM identitas where id_identitas='1'")->row_array();
-              $idmember = $this->db->query("SELECT * FROM rb_konsumen where id_konsumen='$id_member'")->row_array();
+           $idadmin = $this->db->query("SELECT * FROM identitas where id_identitas='1'")->row_array();
+           $idmember = $this->db->query("SELECT * FROM rb_konsumen where id_konsumen='$id_member'")->row_array();
 
               
-              $subject      = 'Halo Admin, Ada Permintaan Withdraw!';
+              $subject      = 'Halo Admin OSC, Ada Permintaan Withdraw!';
               $message      = "<html><body>
 
               
@@ -405,7 +408,7 @@ class Investasi extends CI_Controller {
                       <tr><td><b>Rekening </b></td>        <td> : $idmember[nama_bank] - $idmember[no_rekening] - $idmember[atas_nama]</td></tr>
 
                       <tr><td colspan='2'>
-                      Informasi selengkapnya dan untuk membuat status WD menjadi TERKIRIM silakan login ke ADMINISTRATOR WEB KoinPintarKita.id
+                      Informasi selengkapnya dan untuk membuat status WD menjadi TERKIRIM silakan login ke ADMINISTRATOR WEB OurSmartCoins.asia
                       </td></tr>
                   </table><br>
                   </body></html> \n";
