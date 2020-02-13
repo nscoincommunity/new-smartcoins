@@ -110,9 +110,9 @@ class Investasi extends CI_Controller {
       
     //bonus khusus admin tanpa batas level
       $persen_admin = $setting_bonus->admin / 100;
-      $jumlah = $persen_admin * $jml_i;
+      $bonusadmin = $persen_admin * $jml_i;
       $databonusadmin = array('id_penerima'=> 1, //ini ID khusus unutk Admin
-                         'jumlah' => $jumlah,
+                         'jumlah' => $bonusadmin,
                          'tanggal' => date('Y-m-d'),
                          'jenis' => 'bonus admin',
                           'dari_investor'=> $i_investor,

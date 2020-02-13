@@ -297,7 +297,7 @@ class Model_investasi extends CI_model {
     $id = 1;
     $dataupdate = array(
       'kurs'   => $this->input->post('kurs'),
-      'sponsor' => $this->input->post('sponsor'),
+      'admin' => $this->input->post('admin'),
       'level1' => $this->input->post('level1'),
       'level2' => $this->input->post('level2'),
       'level3' => $this->input->post('level3'),
@@ -306,7 +306,6 @@ class Model_investasi extends CI_model {
       'bank'   => $this->input->post('bank'),
       'crypto' => $this->input->post('crypto'),
       'wa_konfirm' => $this->input->post('wa'),
-      'beli_voucher' => $this->input->post('beli_voucher'),
       'persen_harian' => $this->input->post('persen_harian'),
       'hold'  => $this->input->post('hold'),
       'masa_kontrak' => $this->input->post('masa_kontrak')

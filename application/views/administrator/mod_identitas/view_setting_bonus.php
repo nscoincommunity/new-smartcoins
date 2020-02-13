@@ -32,11 +32,7 @@
                     <td> Nomor WA untuk konfirmasi setelah transfer deposit </td>
                     </tr>
 
-                    <tr><th width='120px' scope='row'>WA Beli Voucher </th>
-                    <td><input type='number' step='any' class='form-control' name='beli_voucher' value='$record->beli_voucher'></td>
-                    <td> Nomor WA untuk pembelian voucher maintenance. Akan dimunculkan di halaman saat akan deposit. </td>
-                    </tr>
-
+                    
                     <tr><th width='120px' scope='row'>Masa Kontrak </th>
                     <td><input type='number' step='any' class='form-control' name='masa_kontrak' value='$record->masa_kontrak'></td>
                     <td> Hari </td>
@@ -54,7 +50,7 @@
                     </tr>
 
                     <tr><th width='120px' scope='row'>Bonus Admin </th>
-                    <td><input type='number' step='any' class='form-control' name='sponsor' value='$record->sponsor'></td>
+                    <td><input type='number' step='any' class='form-control' name='admin' value='$record->admin'></td>
                     <td> % </td>
                     </tr>
 
