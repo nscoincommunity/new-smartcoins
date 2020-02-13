@@ -42,6 +42,9 @@ $('#invest-table').DataTable( {
     });
 
 $('#TableProfit').DataTable();
+
+$('#TableSponsor1').DataTable();
+$('#TableSponsor2').DataTable();
   
   $('#TableBonus').DataTable({
         "order": [[ 0, "desc" ]],

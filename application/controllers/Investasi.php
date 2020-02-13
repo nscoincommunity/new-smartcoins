@@ -637,7 +637,12 @@ function cek_saldo() {
   function sponsorship() {
     cek_session_members();
     $id = $this->session->userdata('id_konsumen');
-    $data['bonuss'] = $this->model_investasi->bonus_by_member($id);
+    $data['sp_level1'] = $this->model_investasi->get_sponsor($id)->result_array();
+    
+    foreach ($sp_level1 as $level1) {
+      
+      $data['sp_level2'] = $this->model_investasi->get_sponsor($level1['id_konsumen'])->result_array();
+    }
 
     $this->load->view('sw-member/header',$data);
     $this->load->view('sw-member/sponsorship',$data);

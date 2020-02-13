@@ -5,50 +5,60 @@
     <div class="tile row">
       <div class="col-md-12">
         <div id="external-events">
-  <h4>DAILY PROFIT REPORT </h4>
+  <h4>SPONSORSHIP NETWORK </h4>
   </p><hr>
   
-  <!-- <div class="card mb-3 text-white bg-primary">
-    <div class="card-body">
-       <blockquote class="card-blockquote">
-          <?php 
-          $id = $this->session->userdata('id_konsumen');
-          $tot = $this->model_investasi->jumlah_profit_per_member($id);
-          foreach ($tot as $row) {
-             echo "<h6>Total Profit : ".uang_usd($row['jumlah'])."</h6>";
-           }
-           ?>
-        </blockquote> 
-      </div>
-    </div> -->
+  <h3>Level 1</h3>
   
-  <table class="table table-striped" id="TableProfit">
+  <table class="table table-striped" id="TableSponsor1">
             <thead>
               <tr>
-                <th style="width: 5%;">Code</th>
-                <th style="width: 10%;">Days to</th>
-                <th>Date</th>
-                <th>Profit Share % </th>
-                <th>Daily Profit</th>
+                <th >JOIN DATE</th>
+                <th >USERNAME</th>
+                <th>DEPOSIT AMOUNT</th>
+                <th>BONUS AMOUNT </th>
+                <th>COUNTRY</th>
               </tr>
             </thead>
             <tbody>
-            <?php 
-            // $harike = $jum;
-            $no=1; foreach ($myprofit as $row) {
-                $harike = $this->model_investasi->harike($row['id_member'], $row['id_investasti'], $row['tanggal']);
-            ?>
+            <?php foreach($sp_level1 as $row) {  ?>
               <tr>
-                <td><?php echo $row['id']; ?></td>
-                <td> <?php echo $harike+11; ?> </td>
-                <td><?php echo tgl_view($row['tanggal']); ?></td>
-                <td> 1 % x <?php $asal = $row['jumlah'] * 100; echo number_format($asal,2,",",".")  ?> </td>
-                <td><?php echo uang_usd($row['jumlah']) ; ?></td>
+                <td> <?php echo $row['tanggal_daftar'] ?> </td>
+                <td> <?php echo $row['username'] ?> </td>
+                <td> </td>
+                <td> </td>
+                <td> <?php echo $row['provinsi'] ?> </td>
               </tr>
-            <?php
-            $harike = $harike - 1;
-            $no++;
-            } ?>
+            <?php } ?>
+
+            </tbody>
+          </table>
+
+          <br><br>
+
+
+          <h3>Level 2</h3>
+  
+  <table class="table table-striped" id="TableSponsor2">
+            <thead>
+              <tr>
+                <th >JOIN DATE</th>
+                <th >USERNAME</th>
+                <th>DEPOSIT AMOUNT</th>
+                <th>BONUS AMOUNT </th>
+                <th>COUNTRY</th>
+              </tr>
+            </thead>
+            <tbody>
+            <?php var_dump($sp_level2); foreach($sp_level2 as $row) {  ?>
+              <tr>
+                <td> <?php echo $row['tanggal_daftar'] ?> </td>
+                <td> <?php echo $row['username'] ?> </td>
+                <td> </td>
+                <td> </td>
+                <td> <?php echo $row['provinsi'] ?> </td>
+              </tr>
+            <?php } ?>
 
             </tbody>
           </table>

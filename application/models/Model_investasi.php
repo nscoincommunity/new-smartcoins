@@ -416,6 +416,12 @@ class Model_investasi extends CI_model {
 
   }
 
+  function get_sponsor($id){
+    $this->db->where('sponsor',$id);
+    $query = $this->db->get('rb_konsumen');
+    return $query;
+  }
+
 
 
 
