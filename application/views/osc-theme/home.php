@@ -374,7 +374,7 @@ Trade and Mining Cryptocurrency </p>
 
                         <div class="sponsor-thumb">
                             <a href="#">
-                                <img height="30" src="<?php echo base_url();?>asset/osc/images/sponsor/VIATBC2.png" alt="sponsor">
+                                <img height="30" src="<?php echo base_url();?>asset/osc/images/sponsor/VIATBC2.PNG" alt="sponsor">
                             </a>
                         </div>
 
