@@ -40,7 +40,7 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="page-header-content">
-                            <h2 class="title">Resgister</h2>
+                            <h2 class="title">Register</h2>
                             
                         </div>
                     </div>

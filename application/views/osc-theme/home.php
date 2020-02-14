@@ -366,58 +366,57 @@ Trade and Mining Cryptocurrency </p>
         <!-- ========Sponsor-Section Starte Here ========-->
         <div class="sponsor-section padding-bottom">
             <div class="container">
+                  <h5 style="text-align:center;" class="title">Support By</h5><br>
                 <div class="sponsors">
                     <div class="owl-carousel owl-theme sponsor-slider">
+                        
+                    
+
                         <div class="sponsor-thumb">
                             <a href="#0">
-                                <img src="<?php echo base_url();?>asset/osc/images/sponsor/sponsor01.png" alt="sponsor">
+                                <img height="30" src="<?php echo base_url();?>asset/osc/images/sponsor/VIATBC2.png" alt="sponsor">
                             </a>
                         </div>
+
                         <div class="sponsor-thumb">
                             <a href="#0">
-                                <img src="<?php echo base_url();?>asset/osc/images/sponsor/sponsor02.png" alt="sponsor">
+                                <img height="30" src="<?php echo base_url();?>asset/osc/images/sponsor/ANTPOOL2.png" alt="sponsor">
                             </a>
                         </div>
+
                         <div class="sponsor-thumb">
                             <a href="#0">
-                                <img src="<?php echo base_url();?>asset/osc/images/sponsor/sponsor03.png" alt="sponsor">
+                                <img height="30" src="<?php echo base_url();?>asset/osc/images/sponsor/AKADEMIPINTARKITA.png" alt="sponsor">
                             </a>
                         </div>
+
                         <div class="sponsor-thumb">
                             <a href="#0">
-                                <img src="<?php echo base_url();?>asset/osc/images/sponsor/sponsor04.png" alt="sponsor">
+                                <img height="30" src="<?php echo base_url();?>asset/osc/images/sponsor/BITMAIN.png" alt="sponsor">
                             </a>
                         </div>
+
                         <div class="sponsor-thumb">
                             <a href="#0">
-                                <img src="<?php echo base_url();?>asset/osc/images/sponsor/sponsor05.png" alt="sponsor">
+                                <img height="30" src="<?php echo base_url();?>asset/osc/images/sponsor/CRYPTOTREND.png" alt="sponsor">
                             </a>
                         </div>
+
                         <div class="sponsor-thumb">
                             <a href="#0">
-                                <img src="<?php echo base_url();?>asset/osc/images/sponsor/sponsor06.png" alt="sponsor">
+                                <img height="30" src="<?php echo base_url();?>asset/osc/images/sponsor/KPK.png" alt="sponsor">
                             </a>
                         </div>
+
                         <div class="sponsor-thumb">
                             <a href="#0">
-                                <img src="<?php echo base_url();?>asset/osc/images/sponsor/sponsor01.png" alt="sponsor">
+                                <img height="30" src="<?php echo base_url();?>asset/osc/images/sponsor/eobot.png" alt="sponsor">
                             </a>
                         </div>
-                        <div class="sponsor-thumb">
-                            <a href="#0">
-                                <img src="<?php echo base_url();?>asset/osc/images/sponsor/sponsor02.png" alt="sponsor">
-                            </a>
-                        </div>
-                        <div class="sponsor-thumb">
-                            <a href="#0">
-                                <img src="<?php echo base_url();?>asset/osc/images/sponsor/sponsor03.png" alt="sponsor">
-                            </a>
-                        </div>
-                        <div class="sponsor-thumb">
-                            <a href="#0">
-                                <img src="<?php echo base_url();?>asset/osc/images/sponsor/sponsor04.png" alt="sponsor">
-                            </a>
-                        </div>
+                       
+                      
+                        
+                        
                     </div>
                     <div class="owl-prev">
                         <i class="fas fa-angle-left"></i>
