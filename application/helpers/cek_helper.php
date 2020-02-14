@@ -1,7 +1,7 @@
 <?php
 error_reporting(0);
 
-function kirim_email($penerima,$judul,$isi,$fromemail='sewuwebmail@gmail.com',$fromname='Smartcoons Asia') {
+function kirim_email($penerima,$judul,$isi,$fromemail='oursmartcoins.asia@gmail.com',$fromname='Our Smart Coins') {
     
         //non smtp --------
         /*
@@ -31,8 +31,8 @@ function kirim_email($penerima,$judul,$isi,$fromemail='sewuwebmail@gmail.com',$f
         $config['protocol'] = "smtp";
         $config['smtp_host'] = "ssl://smtp.gmail.com";
         $config['smtp_port'] = "465";
-        $config['smtp_user'] = "sewuwebmail@gmail.com";
-        $config['smtp_pass'] = "yeye1234";
+        $config['smtp_user'] = "oursmartcoins.asia@gmail.com";
+        $config['smtp_pass'] = "koinsmart@asia";
         $config['charset'] = "utf-8";
         $config['mailtype'] = "html";
         $config['newline'] = "\r\n";

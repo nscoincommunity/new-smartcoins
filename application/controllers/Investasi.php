@@ -392,43 +392,7 @@ class Investasi extends CI_Controller {
         else  {
           $this->model_investasi->insert_withdraw($datainput);
           
-           $set = $this->db->query("SELECT * FROM rb_setting where aktif='Y'")->row_array();
-           $idadmin = $this->db->query("SELECT * FROM identitas where id_identitas='1'")->row_array();
-           $idmember = $this->db->query("SELECT * FROM rb_konsumen where id_konsumen='$id_member'")->row_array();
-
-              
-              $subject      = 'Halo Admin OSC, Ada Permintaan Withdraw!';
-              $message      = "<html><body>
-
-              
-                  <table style='width:100%; margin-left:25px'>
-                      <tr><td style='background:#337ab7; color:#fff; pading:20px' cellpadding=6 colspan='2'><b>Berikut ini data permintaan Withdraw yang masuk pada $tgl : </b></td></tr>
-                      <tr><td><b>Nama Member </b></td>  <td> : $idmember[nama_lengkap] </td></tr>
-                      <tr><td><b>Jumlah yang harus ditransfer </b></td>        <td> : $jumlah_ditransfer</td></tr>
-                      <tr><td><b>Rekening </b></td>        <td> : $idmember[nama_bank] - $idmember[no_rekening] - $idmember[atas_nama]</td></tr>
-
-                      <tr><td colspan='2'>
-                      Informasi selengkapnya dan untuk membuat status WD menjadi TERKIRIM silakan login ke ADMINISTRATOR WEB OurSmartCoins.asia
-                      </td></tr>
-                  </table><br>
-                  </body></html> \n";
-
-              $this->email->from($idadmin['email'], 'Permintaan WD Baru');
-              $this->email->to('aan.ahmads78@gmail.com');
-              $this->email->cc('');
-              $this->email->bcc('');
-
-              $this->email->subject($subject);
-              $this->email->message($message);
-              $this->email->set_mailtype("html");
-              $this->email->send();
-
-              $config['protocol'] = 'sendmail';
-              $config['mailpath'] = '/usr/sbin/sendmail';
-              $config['charset'] = 'utf-8';
-              $config['wordwrap'] = TRUE;
-              $config['mailtype'] = 'html';
-              $this->email->initialize($config);
+          
           
           
         redirect('investasi/withdraw');
@@ -464,38 +428,7 @@ function cek_saldo() {
               $this->model_investasi->transfer_profit_kebank($id,$banknya);
 
               
-              $subject      = 'Dana Anda Sudah Ditransfer!';
-              $message      = "<html><body>
-                  <table style='width:100%; margin-left:10px'>
-                      <tr><td cellpadding=6 colspan='2'>
-                      Halo $datamember[nama_lengkap], Penarikan Dana (Withdrawal) Anda sudah berhasil ditransfer ke nomor rekening yang terdaftar di akun Anda. </td></tr>
-                      <tr><td><b>Jumlah yg ditransfer </b></td>   <td><b> : $jumlah_ditransfer</b></td></tr>
-                      <tr><td><b>Rekening </b></td>        <td><b> : $datamember[nama_bank] - $datamember[no_rekening] - $datamember[atas_nama] </b></td></tr>
-
-                      <tr><td colspan='2'>
-                  Demikian yang dapat kami informasikan, terima kasih.    
-                      </td></tr>
-                  </table><br><br>
-                  
-                  Admin KoinPintarKita.id
-                  </body></html> \n";
-
-              $this->email->from($idadmin['email'], 'Dana sudah berhasil ditransfer');
-              $this->email->to($datamember['email']);
-              $this->email->cc('');
-              $this->email->bcc('');
-
-              $this->email->subject($subject);
-              $this->email->message($message);
-              $this->email->set_mailtype("html");
-              $this->email->send();
-
-              $config['protocol'] = 'sendmail';
-              $config['mailpath'] = '/usr/sbin/sendmail';
-              $config['charset'] = 'utf-8';
-              $config['wordwrap'] = TRUE;
-              $config['mailtype'] = 'html';
-              $this->email->initialize($config);
+              
               
     redirect('administrator/permintaan_wd');
 
@@ -512,40 +445,6 @@ function cek_saldo() {
 
               $banknya = $datamember['rekning_virtual'];
               $this->model_investasi->transfer_profit_crypto($id,$banknya);
-
-              
-              $subject      = 'Dana Anda Sudah Ditransfer!';
-              $message      = "<html><body>
-                  <table style='width:100%; margin-left:10px'>
-                      <tr><td cellpadding=6 colspan='2'>
-                      Halo $datamember[nama_lengkap], Penarikan Dana (Withdrawal) Anda sudah berhasil ditransfer ke nomor rekening yang terdaftar di akun Anda. </td></tr>
-                      <tr><td><b>Jumlah yg ditransfer </b></td>   <td><b> : $jumlah_ditransfer</b></td></tr>
-                      <tr><td><b>Rekening </b></td>        <td><b> : $datamember[nama_bank] - $datamember[no_rekening] - $datamember[atas_nama] </b></td></tr>
-
-                      <tr><td colspan='2'>
-                  Demikian yang dapat kami informasikan, terima kasih.    
-                      </td></tr>
-                  </table><br><br>
-                  
-                  Admin KoinPintarKita.id
-                  </body></html> \n";
-
-              $this->email->from($idadmin['email'], 'Dana sudah berhasil ditransfer');
-              $this->email->to($datamember['email']);
-              $this->email->cc('');
-              $this->email->bcc('');
-
-              $this->email->subject($subject);
-              $this->email->message($message);
-              $this->email->set_mailtype("html");
-              $this->email->send();
-
-              $config['protocol'] = 'sendmail';
-              $config['mailpath'] = '/usr/sbin/sendmail';
-              $config['charset'] = 'utf-8';
-              $config['wordwrap'] = TRUE;
-              $config['mailtype'] = 'html';
-              $this->email->initialize($config);
               
     redirect('administrator/permintaan_wd');
 
@@ -577,48 +476,7 @@ function cek_saldo() {
       $this->model_investasi->tarik_dana_ccm($data_insert);
       $this->model_investasi->update_status_inv($idccm);
       //kirim email ke admin
-              $set = $this->db->query("SELECT * FROM rb_setting where aktif='Y'")->row_array();
-              $idadmin = $this->db->query("SELECT * FROM identitas where id_identitas='1'")->row_array();
-              //$getidmember = $this->db->query("SELECT * FROM sw_tarik_modal where id_penarikan='$idccm'")->row_array();
-              //$idm = $getidmember['id_investor'];
-              
-              $datamember = $this->db->query("SELECT * FROM rb_konsumen where id_konsumen='$idmember'")->row_array();
-
-              
-              $subject      = 'Permintaan Penarikan Dana CCM';
-              $message      = "<html><body>
-                  <table style='width:100%; margin-left:10px'>
-                      <tr><td cellpadding=6 colspan='2'>
-                      Halo Admin, ada permintaan penarikan Dana CCM. Berikut ini datanya  </td></tr>
-                      <tr><td><b>Nama  </b></td>   <td><b> : $datamember[nama_lengkap]</b></td></tr>
-                      <tr><td><b>Jumlah Penarikan </b></td>   <td><b> : $jumlah</b></td></tr>
-                      <tr><td><b>Rekening </b></td>        <td><b> : $datamember[nama_bank] - $datamember[no_rekening] - $datamember[atas_nama] </b></td></tr>
-
-                      <tr><td colspan='2'>
-                  Untuk informasi selengkapnya serta untuk membuat status penarikan ini berhasil ditransfer, silahkan login ke Administrator web dan cek pada menu Penarikan CCM.    
-                      </td></tr>
-                  </table><br><br>
-                  
-                  
-                  </body></html> \n";
-
-              $this->email->from($idadmin['email'], 'Penarikan Dana CCM');
-              $this->email->to('jianrapemda@gmail.com');
-              $this->email->cc('');
-              $this->email->bcc('');
-
-              $this->email->subject($subject);
-              $this->email->message($message);
-              $this->email->set_mailtype("html");
-              $this->email->send();
-
-              $config['protocol'] = 'sendmail';
-              $config['mailpath'] = '/usr/sbin/sendmail';
-              $config['charset'] = 'utf-8';
-              $config['wordwrap'] = TRUE;
-              $config['mailtype'] = 'html';
-              $this->email->initialize($config);
-
+             
 
     
             
@@ -632,51 +490,8 @@ function cek_saldo() {
     $this->model_investasi->transfer_danaccm($id);
     $this->model_investasi->update_status_inv_trf($id_inv);
 
-    //kirim email ke user
-              $set = $this->db->query("SELECT * FROM rb_setting where aktif='Y'")->row_array();
-              $idadmin = $this->db->query("SELECT * FROM identitas where id_identitas='1'")->row_array();
-              $getidmember = $this->db->query("SELECT * FROM sw_tarik_modal where id_penarikan='$id'")->row_array();
-              $idm = $getidmember['id_investor'];
-              
-              $datamember = $this->db->query("SELECT * FROM rb_konsumen where id_konsumen='$idm'")->row_array();
-
-              $subject      = 'Dana CCM Anda sudah Ditransfer!';
-              $message      = "<html><body>
-                  <table style='width:100%; margin-left:10px'>
-                      <tr><td cellpadding=6 colspan='2'>
-                      Halo $datamember[nama_lengkap], Dana CCM Anda sudah berhasil ditransfer ke rekening Anda. Berikut rinciannya  </td></tr>
-                      
-                      <tr><td><b>Jumlah Ditransfer </b></td>   <td><b> : $jumlah</b></td></tr>
-                      <tr><td><b>Rekening Tujuan </b></td>        <td><b> : $datamember[nama_bank] - $datamember[no_rekening] - $datamember[atas_nama] </b></td></tr>
-                      
-
-                      <tr><td colspan='2'>
-                  Demikian yang dapat kami informasikan. Terima kasih atas kerjasamanya.    
-                      </td></tr>
-                  </table><br><br>
-                  - Admin -
-                  
-                  </body></html> \n";
-
-              $this->email->from($idadmin['email'], 'Dana CCM Sudah Ditransfer');
-              $this->email->to($datamember['email']); 
-              $this->email->cc('');
-              $this->email->bcc('');
-
-              $this->email->subject($subject);
-              $this->email->message($message);
-              $this->email->set_mailtype("html");
-              $this->email->send();
-
-              $config['protocol'] = 'sendmail';
-              $config['mailpath'] = '/usr/sbin/sendmail';
-              $config['charset'] = 'utf-8';
-              $config['wordwrap'] = TRUE;
-              $config['mailtype'] = 'html';
-              $this->email->initialize($config);
-
-
-     
+    
+ 
     redirect('administrator/penarikan_ccm');
 
   }

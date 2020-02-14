@@ -12,48 +12,6 @@ class Model_investasi extends CI_model {
                       );
       $this->db->insert('sw_investasi',$datadb);
 
-
-              $set = $this->db->query("SELECT * FROM rb_setting where aktif='Y'")->row_array();
-              $identitas = $this->db->query("SELECT * FROM identitas where id_identitas='1'")->row_array();
-              $idm = $this->db->query("SELECT * FROM rb_konsumen where id_konsumen='$idk'")->row_array();
-
-              $jumlah_inv = $jumlah;
-              $tglinvest = date("d-m-Y H:i:s");
-              $subject      = '[KOINPINTARKITA.ID] - Pengajuan CCM Baru';
-              $message      = "<html><body>Halo <b>".$idm['nama_lengkap']."</b>, <br> Hari ini, pada tanggal <span style='color:red'>$tglinvest</span> Anda mengajukan Crypto cloud mining  di $identitas[nama_website].
-                  <table style='width:100%; margin-left:25px'>
-                      <tr><td style='background:#337ab7; color:#fff; pading:20px' cellpadding=6 colspan='2'><b>Berikut ini data rinciannya : </b></td></tr>
-                      <tr><td><b>Jumlah CCM</b></td>  <td> : $jumlah </td></tr>
-                      <tr><td><b>Kode Unik </b></td>        <td> : $kode</td></tr>
-
-                      <tr><td colspan='2'>
-                      Silahkan lakukan penyetoran dana CCM Anda, transfer malalui rekening berikut :<br>
-                      MANDIRI - a.n. KOIN PINTAR KITA - No. Rek :  182-00-0277990-8
-                      <br>
-                      Setelah transfer, segera konfirmasi ke admin melalui WA :<br>
-                      085720009070<br>
-                      infokan KODE UNIK, JUMLAH TRANSFER dan NAMA ANDA.<br>
-
-                      </td></tr>
-                  </table><br>
-                  </body></html> \n";
-
-              $this->email->from($identitas['email'], 'Pengajuan CCM Baru');
-              $this->email->to($idm['email']);
-              $this->email->cc('');
-              $this->email->bcc('');
-
-              $this->email->subject($subject);
-              $this->email->message($message);
-              $this->email->set_mailtype("html");
-              $this->email->send();
-
-              $config['protocol'] = 'sendmail';
-              $config['mailpath'] = '/usr/sbin/sendmail';
-              $config['charset'] = 'utf-8';
-              $config['wordwrap'] = TRUE;
-              $config['mailtype'] = 'html';
-              $this->email->initialize($config);
   }
 
   function acc_investasi($id,$data_update) {

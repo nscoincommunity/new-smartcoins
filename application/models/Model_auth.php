@@ -48,7 +48,7 @@ class Model_auth extends CI_model{
 
         //$kirim = kirim_email($email_tujuan,$subject,$message);
         
-        $this->email->from('sewuwebmail@gmail.com', $ident['nama_website']);
+        $this->email->from('oursmartcoins.asia@gmail.com', $ident['nama_website']);
         $this->email->to($email_tujuan);
         $this->email->cc('');
         $this->email->bcc('');
@@ -62,18 +62,12 @@ class Model_auth extends CI_model{
         'protocol' => 'smtp',
         'smtp_host' => 'ssl://smtp.googlemail.com',
         'smtp_port' => 465,
-        'smtp_user' => 'sewuwebmail@gmail.com',
-        'smtp_pass' => 'yeye1234',
+        'smtp_user' => 'oursmartcoins.asia@gmail.com',
+        'smtp_pass' => 'koinsmart@asia',
         'mailtype'  => 'html', 
         'charset'   => 'iso-8859-1' );
         $this->load->library('email', $config);
         $this->email->set_newline("\r\n");
-
-        //$config['protocol'] = 'sendmail';
-        //$config['mailpath'] = '/usr/sbin/sendmail';
-        //$config['charset'] = 'utf-8';
-        //$config['wordwrap'] = TRUE;
-        //$config['mailtype'] = 'html';
         $this->email->initialize($config);
         
         
