@@ -2,6 +2,30 @@
 error_reporting(0);
 
 function kirim_email($penerima,$judul,$isi,$fromemail='oursmartcoins.asia@gmail.com',$fromname='Our Smart Coins') {
+
+    //smtp config
+        $_this = & get_instance();
+        $config = Array(
+        'protocol' => 'smtp',
+        'smtp_host' => 'ssl://smtp.googlemail.com',
+        'smtp_port' => 465,
+        'smtp_user' => 'oursmartcoins.asia@gmail.com',
+        'smtp_pass' => 'koinsmart@asia',
+        'mailtype'  => 'html', 
+        'charset'   => 'iso-8859-1' );
+        
+        $_this->load->library('email', $config);
+        $_this->email->set_newline("\r\n");
+        $_this->email->initialize($config);
+
+        $_this->email->from($fromemail,$fromname);
+        $_this->email->to($penerima);
+        $_this->email->cc('');
+        $_this->email->bcc('');
+        $_this->email->subject($judul);
+        $_this->email->message($isi);
+        $_this->email->set_mailtype("html");
+        $_this->email->send();
     
         //non smtp --------
         /*
@@ -26,7 +50,7 @@ function kirim_email($penerima,$judul,$isi,$fromemail='oursmartcoins.asia@gmail.
         */
 
         // pakai smtp 
-        $ci = & get_instance();
+        /*$ci = & get_instance();
         $ci->load->library('email');
         $config['protocol'] = "smtp";
         $config['smtp_host'] = "ssl://smtp.gmail.com";
@@ -48,7 +72,7 @@ function kirim_email($penerima,$judul,$isi,$fromemail='oursmartcoins.asia@gmail.
         } else {
             show_error($ci->email->print_debugger());
         } 
-
+        */
 
     }
 
