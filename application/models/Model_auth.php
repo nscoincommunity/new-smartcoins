@@ -46,8 +46,8 @@ class Model_auth extends CI_model{
             Admin, $ident[nama_website]
         </body></html> \n";
 
-        kirim_email($email_tujuan,$subject,$message);
-        /*
+     
+        
         $this->email->from('oursmartcoins.asia@gmail.com', $ident['nama_website']);
         $this->email->to($email_tujuan);
         $this->email->cc('');
@@ -69,7 +69,7 @@ class Model_auth extends CI_model{
         $this->load->library('email', $config);
         $this->email->set_newline("\r\n");
         $this->email->initialize($config);
-        */
+        
         
     }
 
