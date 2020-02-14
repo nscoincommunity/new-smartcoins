@@ -282,11 +282,15 @@ class Auth extends CI_Controller {
 				}
 			}
 		}else{
-			$data['title'] = 'User Login';
+			if ($this->session->userdata('username') =='' ) {
+					$data['title'] = 'User Login';
 			$this->load->view('sw-member/login_page',$data);
-			//$this->load->view('osc-theme/login',$data);
-			//$this->load->view('osc-theme/footer',$data);
-			//$this->template->load('phpmu-one/template','phpmu-one/view_login',$data);
+
+			} else {
+				redirect('members');
+			}
+			
+		
 		}
 	}
 
@@ -309,8 +313,8 @@ class Auth extends CI_Controller {
 
 	function login_ajax(){
 		if( $this->input->is_ajax_request() ) {
-
-			$email = $this->input->post('email');
+			
+				$email = $this->input->post('email');
 				$password = hash("sha512", md5(strip_tags($this->input->post('password'))));
 				$cek = $this->db->query("SELECT * FROM rb_konsumen where email='".$this->db->escape_str($email)."' AND password='".$this->db->escape_str($password)."'AND status ='1' ");
 			    $row = $cek->row_array();
@@ -331,6 +335,7 @@ class Auth extends CI_Controller {
 					echo json_encode(array('status'=>'fail' ));
 				}
 
+			
 
 		}
 	} 
