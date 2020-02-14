@@ -373,43 +373,43 @@ Trade and Mining Cryptocurrency </p>
                     
 
                         <div class="sponsor-thumb">
-                            <a href="#0">
+                            <a href="#">
                                 <img height="30" src="<?php echo base_url();?>asset/osc/images/sponsor/VIATBC2.png" alt="sponsor">
                             </a>
                         </div>
 
                         <div class="sponsor-thumb">
-                            <a href="#0">
-                                <img height="30" src="<?php echo base_url();?>asset/osc/images/sponsor/ANTPOOL2.png" alt="sponsor">
+                            <a href="#">
+                                <img height="30" src="<?php echo base_url();?>asset/osc/images/sponsor/ANTPOOL2.PNG" alt="sponsor">
                             </a>
                         </div>
 
                         <div class="sponsor-thumb">
-                            <a href="#0">
-                                <img height="30" src="<?php echo base_url();?>asset/osc/images/sponsor/AKADEMIPINTARKITA.png" alt="sponsor">
+                            <a href="#">
+                                <img height="30" src="<?php echo base_url();?>asset/osc/images/sponsor/AKADEMIPINTARKITA.PNG" alt="sponsor">
                             </a>
                         </div>
 
                         <div class="sponsor-thumb">
-                            <a href="#0">
+                            <a href="#">
                                 <img height="30" src="<?php echo base_url();?>asset/osc/images/sponsor/BITMAIN.png" alt="sponsor">
                             </a>
                         </div>
 
                         <div class="sponsor-thumb">
-                            <a href="#0">
+                            <a href="#">
                                 <img height="30" src="<?php echo base_url();?>asset/osc/images/sponsor/CRYPTOTREND.png" alt="sponsor">
                             </a>
                         </div>
 
                         <div class="sponsor-thumb">
-                            <a href="#0">
+                            <a href="#">
                                 <img height="30" src="<?php echo base_url();?>asset/osc/images/sponsor/KPK.png" alt="sponsor">
                             </a>
                         </div>
 
                         <div class="sponsor-thumb">
-                            <a href="#0">
+                            <a href="#">
                                 <img height="30" src="<?php echo base_url();?>asset/osc/images/sponsor/eobot.png" alt="sponsor">
                             </a>
                         </div>
