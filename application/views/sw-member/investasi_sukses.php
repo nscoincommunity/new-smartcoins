@@ -23,7 +23,7 @@
             <p style="font-size:16px;"> If making a payment in IDR, use the exchange rate: 
             <strong> <?php echo 'Rp '. $this->model_investasi->get_setting_bonus()->kurs; ?> </strong> / $1</p> 
             <p>After depositing the deposit, please confirm to :
-             <?php echo 'WA : <strong>'. $this->model_investasi->get_setting_bonus()->wa_konfirm; ?> </strong><br><br>
+             <?php echo 'WA : <strong>+'. $this->model_investasi->get_setting_bonus()->wa_konfirm; ?> </strong><br><br>
             
         </div>
   </div>
