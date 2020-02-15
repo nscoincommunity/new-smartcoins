@@ -1,70 +1,16 @@
  <!-- ========Feature-Section Starts Here ========-->
         <section class="page-header">
-            <div class="elepsis header-trop">
-                <img src="<?php echo base_url();?>asset/osc/images/profit/elepsis.png" alt="profit">
-            </div>
-            <div class="circle-2 header-trop" data-paroller-factor="-0.30" data-paroller-factor-lg="0.60"
-                data-paroller-type="foreground" data-paroller-direction="horizontal">
-                <img src="<?php echo base_url();?>asset/osc/images/animation/05.png" alt="shape">
-            </div>
-            <div class="circle-3 header-trop" data-paroller-factor="0.10" data-paroller-factor-lg="-0.30"
-                data-paroller-type="foreground" data-paroller-direction="horizontal">
-                <img src="<?php echo base_url();?>asset/osc/images/animation/08.png" alt="shape">
-            </div>
-            <div class="star-4 header-trop">
-                <img src="<?php echo base_url();?>asset/osc/images/animation/07.png" alt="shape">
-            </div>
-            <div class="star-4 two header-trop">
-                <img src="<?php echo base_url();?>asset/osc/images/animation/07.png" alt="shape">
-            </div>
-            <div class="star-5 header-trop">
-                <img src="<?php echo base_url();?>asset/osc/images/animation/07.png" alt="shape">
-            </div>
-            <div class="circle-1 two header-trop">
-                <img src="<?php echo base_url();?>asset/osc/images/animation/10.png" alt="shape">
-            </div>
-            <div class="trop-4 header-trop">
-                <img src="<?php echo base_url();?>asset/osc/images/animation/14.png" alt="animation">
-            </div>
-            <div class="trop-3 header-trop">
-                <img src="<?php echo base_url();?>asset/osc/images/animation/13.png" alt="animation">
-            </div>
-            <div class="circle-1 three header-trop">
-                <img src="<?php echo base_url();?>asset/osc/images/animation/12.png" alt="animation">
-            </div>
-            <div class="circle-2 header-trop" data-paroller-factor="-0.30" data-paroller-factor-lg="0.60"
-                data-paroller-type="foreground" data-paroller-direction="horizontal">
-                <img src="<?php echo base_url();?>asset/osc/images/animation/05.png" alt="shape">
-            </div>
+          
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-6">
-                        <div class="page-header-content">
-                            <h2 class="title">Register</h2>
-                            
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="page-header-thumb wow slideInDown">
-                            <img src="<?php echo base_url();?>asset/osc/images/page-header/page-header-01.png" alt="page-header">
-                            <div class="leftcon">
-                                <img src="<?php echo base_url();?>asset/osc/images/page-header/shape1.png" alt="page-header">
-                            </div>
-                            <div class="rightcon">
-                                <img src="<?php echo base_url();?>asset/osc/images/page-header/shape2.png" alt="page-header">
-                            </div>
-                            <div class="coin wow bounceInDown" data-wow-delay=".5s">
-                                <img src="<?php echo base_url();?>asset/osc/images/page-header/coin.png" alt="page-header">
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
         </section>
         <!-- ========Feature-Section Eventes Here ========-->
 
 <!-- ========Contact-Section Starts Here ========-->
-        <section class="contact-section padding-bottom padding-top">
+        <section class="contact-section" id="formregister" >
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 d-none d-lg-block">
@@ -80,9 +26,13 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="contact-header">
-                            <span>Your Sponsor : </span>
-                            <h5 class="title"><?php foreach($sponsor as $names) { echo $names['username'] ; }  ?> </h5>
+                            <span>Your Sponsor Username :  <strong><?php foreach($sponsor as $names) { echo $names['username'] ; }  ?> </strong> </span>
+                            
+                                          <div class="alert alert-danger" role="alert">
+  <strong>IMPORTANT :</strong><br> Make sure your sponsor's username is correct before continuing to register!
+</div>
                         </div>
+
                        
 
                                     <?php

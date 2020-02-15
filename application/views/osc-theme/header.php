@@ -44,7 +44,7 @@
             <i class="fas fa-angle-up"></i>
         </a>
         <div class="overlay"></div>
-        <header class="header">
+        <header class="header" style="top:0;">
             <div class="header-top">
                 <div class="container">
                     <div class="header-top-area">
