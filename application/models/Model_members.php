@@ -200,7 +200,7 @@ class Model_members extends CI_model{
     }
 
     function kode_konsumen(){
-        return $this->db->query("SELECT * FROM rb_konsumen where status = 'free' ORDER BY id_konsumen DESC");
+        return $this->db->query("SELECT * FROM rb_konsumen where status = 0 ORDER BY id_konsumen DESC");
     }
 
     function kode_konsumenLama(){
@@ -436,7 +436,7 @@ class Model_members extends CI_model{
 
     function aktivasi_member($id) {
       $data = array(
-        'status' =>'sold'
+        'status' =>1
       );
 
       $this->db->where('id_konsumen', $id);

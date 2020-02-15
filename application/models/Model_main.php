@@ -23,7 +23,7 @@ class Model_main extends CI_model{
         $this->load->library('upload', $config);
         $this->upload->do_upload('logo');
         $hasil=$this->upload->data();
-            $datadb = array('gambar'=>$hasil['file_name']);
+        $datadb = array('gambar'=>$hasil['file_name']);
         $this->db->where('id_logo',$this->input->post('id'));
         $this->db->update('logo',$datadb);
     }
@@ -73,11 +73,11 @@ class Model_main extends CI_model{
         $this->upload->do_upload('b');
         $hasil=$this->upload->data();
         if ($hasil['file_name']==''){
-            $datadb = array('keterangan'=>$this->input->post('a'),
+        $datadb = array('keterangan'=>$this->input->post('a'),
                             'judul_slide' =>$this->input->post('judulslider'),
                             'waktu'=>date('Y-m-d H:i:s'));
         }else{
-            $datadb = array('judul_slide' =>$this->input->post('judulslider'),
+        $datadb = array('judul_slide' =>$this->input->post('judulslider'),
                             'keterangan'=>$this->input->post('a'),
                             'gambar'=>$hasil['file_name'],
                             'waktu'=>date('Y-m-d H:i:s'));
@@ -93,10 +93,10 @@ class Model_main extends CI_model{
         $this->upload->do_upload('b');
         $hasil=$this->upload->data();
         if ($hasil['file_name']==''){
-            $datadb = array('judul_slide' =>$this->input->post('judulslide'),
+        $datadb = array('judul_slide' =>$this->input->post('judulslide'),
                             'keterangan'=>$this->input->post('a'));
         }else{
-            $datadb = array('judul_slide' =>$this->input->post('judulslide'),
+        $datadb = array('judul_slide' =>$this->input->post('judulslide'),
                             'keterangan'=>$this->input->post('a'),
                             'gambar'=>$hasil['file_name']);
         }
@@ -126,7 +126,7 @@ class Model_main extends CI_model{
             $hasil=$this->upload->data();
 
             if ($hasil['file_name']==''){
-                    $datadb = array('nama_website'=>$this->db->escape_str($this->input->post('a')),
+            $datadb = array('nama_website'=>$this->db->escape_str($this->input->post('a')),
                                     'email'=>$this->db->escape_str($this->input->post('b')),
                                     'url'=>$this->db->escape_str($this->input->post('c')),
                                     'facebook'=>$this->db->escape_str($this->input->post('d')),
@@ -137,7 +137,7 @@ class Model_main extends CI_model{
                                     'deskripsi'=>$this->input->post('h'),
                                     'visimisi'=>$this->input->post('j'));
             }else{
-                    $datadb = array('nama_website'=>$this->db->escape_str($this->input->post('a')),
+            $datadb = array('nama_website'=>$this->db->escape_str($this->input->post('a')),
                                     'email'=>$this->db->escape_str($this->input->post('b')),
                                     'url'=>$this->db->escape_str($this->input->post('c')),
                                     'facebook'=>$this->db->escape_str($this->input->post('d')),

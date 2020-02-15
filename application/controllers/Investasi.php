@@ -59,8 +59,6 @@ class Investasi extends CI_Controller {
 
   }
 
-  
-  
 
   function info_transfer() {
     $this->load->view('sw-member/header',$data);
@@ -391,10 +389,45 @@ class Investasi extends CI_Controller {
         } 
         else  {
           $this->model_investasi->insert_withdraw($datainput);
-          
-          
-          
-          
+
+          /* kirim Email pakai SMTP*/
+        $email_tujuan   = $this->model_investasi->get_info_member($id_member)->email;
+        $inforek        = $this->model_investasi->get_info_member($id_member)->nama_bank. ' - '
+                          .$this->model_investasi->get_info_member($id_member)->no_rekening.' - '
+                          .$this->model_investasi->get_info_member($id_member)->atas_nama;
+        $vrek           = $this->model_investasi->get_info_member($id_member)->rekning_virtual;
+        $tglaktif       = date("d-m-Y H:i:s");
+        $subject        = 'Permintaan WD dari Member OSC!';
+        $message        = "<html><body>
+        Hello Admin!</b> 
+        <br>ada permintaan penarikan dana dari member OurSmartCoins.<br>
+        Jumlah Penarikan : ".$jumlah."<br>
+        Tujuan Transfer ke : ".$inforek. " <br> atau <br> ".$vrek."
+        <br><br><br>
+            <b>Our Smart Coins System</b>
+        </body></html> \n";
+
+        $this->email->from('oursmartcoins.asia@gmail.com', 'Our Smart Coins');
+        $this->email->to('oursmartcoin@gmail.com');
+        $this->email->cc('');
+        $this->email->bcc('');
+        $this->email->subject($subject);
+        $this->email->message($message);
+        $this->email->set_mailtype("html");
+        $this->email->send();
+        $config = Array(
+        'protocol' => 'smtp',
+        'smtp_host' => 'ssl://smtp.googlemail.com',
+        'smtp_port' => 465,
+        'smtp_user' => 'oursmartcoins.asia@gmail.com',
+        'smtp_pass' => 'koinsmart@asia',
+        'mailtype'  => 'html', 
+        'charset'   => 'iso-8859-1' );
+        $this->load->library('email', $config);
+        $this->email->set_newline("\r\n");
+        $this->email->initialize($config);
+        /* End of Kirim Email */
+
         redirect('investasi/withdraw');
 
         }
@@ -421,15 +454,54 @@ function cek_saldo() {
               $idadmin = $this->db->query("SELECT * FROM identitas where id_identitas='1'")->row_array();
               $getidmember = $this->db->query("SELECT * FROM sw_withdraw where id='$id'")->row_array();
               $idm = $getidmember['id_member'];
+
               $jumlah_ditransfer = rupiah($getidmember['jumlah_ditransfer']);
               $datamember = $this->db->query("SELECT * FROM rb_konsumen where id_konsumen='$idm'")->row_array();
+              
 
               $banknya = $datamember['nama_bank'].' - '.$datamember['no_rekening'].' - '.$datamember['atas_nama'];
+
               $this->model_investasi->transfer_profit_kebank($id,$banknya);
 
-              
-              
-              
+
+          /* kirim Email pakai SMTP*/
+        $emailnya = $this->model_investasi->get_info_member($idm)->email;
+        $namanya = $this->model_investasi->get_info_member($idm)->nama_lengkap;
+
+        $tglaktif       = date("d-m-Y H:i:s");
+        $subject        = 'Your withdrawal has been processed!';
+        $message        = "<html><body>
+        Hello ".$namanya."!</b> 
+        <br> Your withdrawal has been processed. <br>
+        Amount : ".$jumlah_ditransfer."<br>
+        Pay To : ".$banknya. " <br> 
+
+        Thank you for your cooperation.
+        <br><br><br>
+            <b>Admin Our Smart Coins</b>
+        </body></html> \n";
+
+        $this->email->from('oursmartcoins.asia@gmail.com','Our Smart Coins');
+        $this->email->to($emailnya);
+        $this->email->cc('');
+        $this->email->bcc('');
+        $this->email->subject($subject);
+        $this->email->message($message);
+        $this->email->set_mailtype("html");
+        $this->email->send();
+        $config = Array(
+        'protocol' => 'smtp',
+        'smtp_host' => 'ssl://smtp.googlemail.com',
+        'smtp_port' => 465,
+        'smtp_user' => 'oursmartcoins.asia@gmail.com',
+        'smtp_pass' => 'koinsmart@asia',
+        'mailtype'  => 'html', 
+        'charset'   => 'iso-8859-1' );
+        $this->load->library('email', $config);
+        $this->email->set_newline("\r\n");
+        $this->email->initialize($config);
+        /* End of Kirim Email */
+
     redirect('administrator/permintaan_wd');
 
   }
@@ -445,6 +517,46 @@ function cek_saldo() {
 
               $banknya = $datamember['rekning_virtual'];
               $this->model_investasi->transfer_profit_crypto($id,$banknya);
+
+               /* kirim Email pakai SMTP*/
+        $emailnya = $this->model_investasi->get_info_member($idm)->email;
+        $namanya = $this->model_investasi->get_info_member($idm)->nama_lengkap;
+
+        $tglaktif       = date("d-m-Y H:i:s");
+        $subject        = 'Your withdrawal has been processed!';
+        $message        = "<html><body>
+        Hello ".$namanya."!</b> 
+        <br> Your withdrawal has been processed. <br>
+        Amount : ".$jumlah_ditransfer."<br>
+        Pay To : ".$banknya. " <br> 
+
+        Thank you for your cooperation.
+        <br><br><br>
+            <b>Admin Our Smart Coins</b>
+        </body></html> \n";
+
+        $this->email->from('oursmartcoins.asia@gmail.com','Our Smart Coins');
+        $this->email->to($emailnya);
+        $this->email->cc('');
+        $this->email->bcc('');
+        $this->email->subject($subject);
+        $this->email->message($message);
+        $this->email->set_mailtype("html");
+        $this->email->send();
+        $config = Array(
+        'protocol' => 'smtp',
+        'smtp_host' => 'ssl://smtp.googlemail.com',
+        'smtp_port' => 465,
+        'smtp_user' => 'oursmartcoins.asia@gmail.com',
+        'smtp_pass' => 'koinsmart@asia',
+        'mailtype'  => 'html', 
+        'charset'   => 'iso-8859-1' );
+        $this->load->library('email', $config);
+        $this->email->set_newline("\r\n");
+        $this->email->initialize($config);
+        /* End of Kirim Email */
+
+
               
     redirect('administrator/permintaan_wd');
 

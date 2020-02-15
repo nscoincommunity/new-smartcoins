@@ -89,10 +89,7 @@ class Auth extends CI_Controller {
 		$activated = $this->model_auth->get_status_member($token);
 		if ($activated->status == 1) {
 			$id_member = $activate;
-			//kirim email akun sudah aktif ya
-
 			redirect('auth/login');
-
 		}else {
 			redirect('main');
 		}
@@ -323,20 +320,11 @@ class Auth extends CI_Controller {
 					$this->session->set_userdata(array('id_konsumen'=>$row['id_konsumen'],
 									   'username'=>$row['username'],
 									   'nama_lengkap'=>$row['nama_lengkap']));
-					//redirect('members');
 					echo json_encode(array('status'=>'ok')); 
 				}else{
-					//$data['title'] = 'Failed Login';
-					//$this->load->view('osc-theme/header',$data);
-					//$this->load->view('osc-theme/login_gagal',$data);
-					//$this->load->view('osc-theme/footer',$data);
-					//$this->template->load('phpmu-one/template','phpmu-one/view_login_error',$data);
-
+				
 					echo json_encode(array('status'=>'fail' ));
 				}
-
-			
-
 		}
 	} 
 
@@ -410,12 +398,6 @@ class Auth extends CI_Controller {
 			$pass = hash("sha512", md5($new_pass));
 			$email = $this->model_investasi->get_by_token($token)->row()->email;
 			//$this->model_investasi->updatepass($email,$pass);
-
-		
-		
-
-
-
 		}
 
 	} 

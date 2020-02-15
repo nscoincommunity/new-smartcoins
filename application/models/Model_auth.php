@@ -33,21 +33,21 @@ class Model_auth extends CI_model{
         
 
         //email aktivasi akun
+
+        /* kirim Email pakai SMTP*/
         $email_tujuan   = strip_tags($this->input->post('email'));
         $tglaktif       = date("d-m-Y H:i:s");
         $subject        = 'Activate Your Account!';
-        $message        = "<html><body>Hello! 
-        <b>".strip_tags($this->input->post('namalengkap'))."</b>
-        <br>Your account at $ident[nama_website] has been successfully created. To be able to login to the member area, you must activate your account by clicking the following link :<br>
+        $message        = "<html><body>
+        Hello <b>".strip_tags($this->input->post('namalengkap'))."!</b>
+        <br>Your account at Our Smart Coins has been successfully created. To be able to login to the member area, you must activate your account by clicking the following link :<br>
         <a href='".base_url('auth/activate')."/".$token."'>".base_url('auth/activate')."/".$token."</a><br><br>
 
         If the link doesn't work, you can copy the link above and paste it into your browser.
-        <br><br>
-            Admin, $ident[nama_website]
+        <br><br><br>
+            <b>Admin Our Smart Coins</b>
         </body></html> \n";
 
-     
-        
         $this->email->from('oursmartcoins.asia@gmail.com', $ident['nama_website']);
         $this->email->to($email_tujuan);
         $this->email->cc('');
@@ -56,8 +56,6 @@ class Model_auth extends CI_model{
         $this->email->message($message);
         $this->email->set_mailtype("html");
         $this->email->send();
-
-        //smtp config
         $config = Array(
         'protocol' => 'smtp',
         'smtp_host' => 'ssl://smtp.googlemail.com',
@@ -69,6 +67,7 @@ class Model_auth extends CI_model{
         $this->load->library('email', $config);
         $this->email->set_newline("\r\n");
         $this->email->initialize($config);
+        /* End of Kirim Email */
         
         
     }

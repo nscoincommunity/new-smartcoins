@@ -439,13 +439,18 @@ class Model_investasi extends CI_model {
     return $query->row();
   }
 
+  function get_info_user($token) {
+    $this->db->where('token',$token);
+    $query = $this->db->get('rb_konsumen');
+    return $query->row();
+  }
 
+  function get_info_member($id) {
+    $this->db->where('id_koneumen',$id);
+    $query = $this->db->get('rb_konsumen');
+    return $query->row();
+  }
 
-
-//////////////////////////////////////////////////////////////////
-/*
-akhir script by sewu desain
-*/
 
 
 

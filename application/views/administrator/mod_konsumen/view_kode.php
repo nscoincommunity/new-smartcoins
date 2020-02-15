@@ -28,14 +28,14 @@
                               <td>$row[email]</td>
                               <td>$row[kota]</td>
                               <td>";
-                    if ($row['status'] == 'free' ) {
-                      echo "Belum Aktif ";
+                    if ($row['status'] == 0 ) {
+                      echo "Belum Aktivasi Email ";
                     } else {
                       echo "Aktif";
                     }
                     echo "
                               <td><center>
-                              <a class='btn btn-success btn-xs' title='Delete Data' href='".base_url()."administrator/aktifkan_member/$row[id_konsumen]' onclick=\"return confirm('Apa anda yakin untuk MENGAKTIFKAN member ini?')\"><span class='glyphicon glyphicon-ok'></span> Aktivasi </a>
+                              <a class='btn btn-success btn-xs' title='Delete Data' href='".base_url()."administrator/aktifkan_member/$row[id_konsumen]' onclick=\"return confirm('Apa anda yakin untuk MENGAKTIFKAN member ini?')\"><span class='glyphicon glyphicon-ok'></span> Aktifkan? </a>
 
 
                                 <a class='btn btn-danger btn-xs' title='Delete Data' href='".base_url()."administrator/delete_konsumen/$row[id_konsumen]' onclick=\"return confirm('Apa anda yakin untuk hapus Data ini?')\"><span class='glyphicon glyphicon-remove'></span> Hapus </a>
