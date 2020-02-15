@@ -78,7 +78,7 @@
 
 
             <li class="treeview">
-              <a href="#"><i class="fa fa-money"></i> <span>Modul Investasi</span><i class="fa fa-angle-left pull-right"></i></a>
+              <a href="#"><i class="fa fa-money"></i> <span>Modul OSC</span><i class="fa fa-angle-left pull-right"></i></a>
               <ul class="treeview-menu">
               <?php
                 $cek=$this->model_app->umenu_akses("koderahasia",$this->session->id_session);
