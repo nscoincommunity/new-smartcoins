@@ -48,6 +48,8 @@ class Investasi extends CI_Controller {
         
         if($jumlah >= 100 ) {
           $input = $this->model_investasi->insert_investasi($id_inv,$jumlah,$fee);
+         // $this->model_investasi->insert_fee($id_inv,$fee);
+
               echo json_encode(array('status'=>TRUE,'pesan'=>'OK'));
         } else {
           echo json_encode(array('status'=>FALSE,'pesan'=>'Minimum Deposit is $100'));
@@ -91,12 +93,13 @@ class Investasi extends CI_Controller {
       'status' => 1
       );
     $this->model_investasi->acc_investasi($id,$data_update);
-    
+
     //cari id investornya
     $invx = $this->model_investasi->get_id_invest($id);
     $row = $invx->row();
     $i_investor = $row->id_investor;
     $i_investasinya = $row->id_inv;
+    $fee_x = $row->fee;
 
     //dari id investor itu ambil data id sponsornya
     $carim = $this->model_investasi->get_id_memberx($i_investor);
@@ -104,6 +107,9 @@ class Investasi extends CI_Controller {
     $i_sponsor = $i_row->sponsor;
     $jml_i = $row->jumlah_inv;
     $setting_bonus = $this->model_investasi->get_setting_bonus();
+
+    // insert fee $10 
+    $this->model_investasi->insert_fee_maintetance($fee_x,$i_investor,$i_investasinya);
 
       
     //bonus khusus admin tanpa batas level

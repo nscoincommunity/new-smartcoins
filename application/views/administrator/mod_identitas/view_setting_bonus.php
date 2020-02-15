@@ -22,7 +22,7 @@
                     <td> Rekening Bank untuk transfer deposit  </td>
                     </tr>
 
-                    <tr><th width='120px' scope='row'>Crypto </th>
+                    <tr><th width='120px' scope='row'>Wallet BTC </th>
                     <td><input type='text' step='any' class='form-control' name='crypto' value='$record->crypto'></td>
                     <td>  Akun crypto untuk tujuan transfer deposit </td>
                     </tr>

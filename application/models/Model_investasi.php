@@ -451,6 +451,16 @@ class Model_investasi extends CI_model {
     return $query->row();
   }
 
+  function insert_fee_maintetance($fee_x,$i_investor,$i_investasinya){
+    $date = date('Y-m-d');
+    $datax = array('tanggal'=>$date,
+                    'jumlah_fee'=>$fee_x,
+                    'dari_investor'=>$i_investor,
+                    'dari_deposit'=>$i_investasinya);
+
+    $this->db->insert('sw_fee',$datax);
+  }
+
 
 
 
