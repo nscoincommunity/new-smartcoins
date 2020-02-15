@@ -106,6 +106,8 @@ class Auth extends CI_Controller {
 
 		$cekktp = $this->db->query("SELECT * FROM rb_konsumen where no_ktp='".strip_tags($this->input->post('noktp'))."'")->num_rows();
 
+		$cek_sponsor = $this->db->query("SELECT * FROM rb_konsumen where id_konsumen='".strip_tags($this->input->post('usponsor'))."'")->num_rows();
+
 
 
 		if ($cekemail >= 1){
@@ -119,7 +121,11 @@ class Auth extends CI_Controller {
 			echo "<script>window.alert( 'Sorry, this KTP : ".$this->input->post('noktp')." has registered. ' );
 														window.location=('".base_url()."auth/register')</script>";
 
-		} else{
+		} elseif ($cek_sponsor != 1 ) {
+			echo "<script>window.alert( 'Sorry, username refferal : ".$this->input->post('usponsor')." not registered. ' );
+														window.location=('".base_url()."auth/register')</script>";
+
+		} else {
 			$this->model_auth->register();
 			redirect('auth/pendaftaran_sukses');
 

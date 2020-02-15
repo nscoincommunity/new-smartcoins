@@ -18,7 +18,7 @@
               <hr>
             <?php echo 'Transfer Bank : <strong>'. $this->model_investasi->get_setting_bonus()->bank.'</strong><br>'; ?>
            
-            <?php echo 'Crypto /USD : <strong>'. $this->model_investasi->get_setting_bonus()->crypto.'</strong>'; ?>
+            <?php echo 'Bitcoin /USD : <strong>'. $this->model_investasi->get_setting_bonus()->crypto.'</strong>'; ?>
             <hr>
             <p style="font-size:16px;"> If making a payment in IDR, use the exchange rate: 
             <strong> <?php echo 'Rp '. $this->model_investasi->get_setting_bonus()->kurs; ?> </strong> / $1</p> 

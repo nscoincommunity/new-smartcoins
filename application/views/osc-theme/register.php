@@ -126,7 +126,7 @@
 
                                                 <div class='form-group w-100'>
 
-                                                <input type='text' class='required form-control' name='vrek' placeholder='Virtual Account for Crypto Payment '></div>
+                                                <input type='text' class='required form-control' name='vrek' placeholder='Doge Wallet '></div>
 
 
                                         <br>
