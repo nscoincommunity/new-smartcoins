@@ -262,10 +262,6 @@ class Investasi extends CI_Controller {
 		redirect('administrator/investasi');
   }
 
-/*
-|  methode "profitshare()" akan dijalankan oleh cron job, sehari sekali
-|  /usr/local/bin/php /home/u4433219/public_html/cryptotrend.id/index.php investasi profitshare   
-*/
 
   function profitshare() {
     $investasi = $this->db->query("SELECT * FROM sw_investasi where status=1")->result_array();

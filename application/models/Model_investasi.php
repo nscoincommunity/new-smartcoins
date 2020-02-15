@@ -461,6 +461,38 @@ class Model_investasi extends CI_model {
     $this->db->insert('sw_fee',$datax);
   }
 
+  function list_fee_admin(){
+    $this->db->select('*');
+    $this->db->from('sw_fee');
+    $this->db->join('rb_konsumen','sw_fee.dari_investor=rb_konsumen.id_konsumen','left');
+    $this->db->join('sw_investasi','sw_fee.dari_deposit=sw_investasi.id_inv','left');
+    $query = $this->db->get();
+    return $query->result_array();
+  }
+
+  function total_fee(){
+    $this->db->select_sum('jumlah_fee');
+    $this->db->from('sw_fee');
+    $query = $this->db->get();
+    return $query->row();
+
+  }
+
+  function jumlah_member_aktif(){
+    $this->db->select('*');
+    $this->db->from('rb_konsumen');
+    $this->db->where('status',1);
+    $query = $this->db->get();
+    return $query;
+  }
+
+  function total_depo_aktif(){
+    $this->db->select_sum('jumlah_inv');
+    $this->db->where('status',1);
+    $query = $this->db->get('sw_investasi');
+    return $query->row();
+  }
+
 
 
 

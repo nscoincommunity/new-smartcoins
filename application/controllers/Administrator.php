@@ -25,7 +25,11 @@ class Administrator extends CI_Controller {
 	}
 
 	function home(){
-		$data['bonus_admin'] = $this->model_investasi->total_bonus_admin();
+		$data['bonus_admin'] = $this->model_investasi->total_bonus_admin()->jumlah;
+		$data['total_fee'] = $this->model_investasi->total_fee()->jumlah_fee;
+		$data['jumlah_member_aktif'] = $this->model_investasi->jumlah_member_aktif()->num_rows();
+		$data['deposit_aktif'] = $this->model_investasi->total_depo_aktif()->jumlah_inv; 
+
 		$this->template->load('administrator/template','administrator/view_home',$data);
 	}
 
@@ -54,6 +58,13 @@ class Administrator extends CI_Controller {
 	function show_bonus(){
 		$data['record'] = $this->model_investasi->list_bonus_all();
 		$this->template->load('administrator/template','administrator/mod_investasi/view_bonus',$data);
+	}
+
+	function fee_maintenance(){
+		$data['total_fee'] = $this->model_investasi->total_fee()->jumlah_fee;
+		$data['record'] = $this->model_investasi->list_fee_admin();
+		$this->template->load('administrator/template','administrator/mod_investasi/view_fee_admin',$data);
+
 	}
 
 

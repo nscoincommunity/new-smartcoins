@@ -116,6 +116,12 @@
                   echo "<li><a href='".base_url()."administrator/investasi_berakhir'><i class='fa fa-circle-o'></i>Deposit Berakhir</a></li>";
                 }
 
+
+                $cek=$this->model_app->umenu_akses("fee_maintenance",$this->session->id_session);
+                if($cek==1 OR $this->session->level=='admin'){
+                  echo "<li><a href='".base_url()."administrator/fee_maintenance'><i class='fa fa-circle-o'></i>Fee Maintetance</a></li>";
+                }
+
                 
 
                 $cek=$this->model_app->umenu_akses("sw_setting_bonus",$this->session->id_session);
