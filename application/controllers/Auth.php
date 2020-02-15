@@ -189,77 +189,6 @@ class Auth extends CI_Controller {
 
 
 
-	public function order(){
-		if (isset($_POST['submit'])){
-			$data['title'] = 'Success Order Kode Aktivasi';
-			$cek = $this->db->query("SELECT * FROM rb_order_kode where alamat_email='".$this->input->post('b')."' AND waktu_order LIKE '".date('Y-m-d H:i')."%'")->num_rows();
-			$identitass = $this->db->query("SELECT * FROM identitas where id_identitas='1'")->row_array();
-			$rekeninggg = $this->db->query("SELECT * FROM rb_rekening");
-			if ($cek >= 1){
-				redirect('main');
-			}
-				$this->model_auth->order();
-				$set = $this->db->query("SELECT * FROM rb_setting where aktif='Y'")->row_array();
-				$harga = $this->input->post('jml') * $set['harga_pin'];
-
-				$email_tujuan = strip_tags($this->input->post('b'));
-				$tglaktif = date("d-m-Y H:i:s");
-				$subject      = 'Pemesanan Kode Aktivasi ...';
-				$message      = "<html><body>Halooo! <b>".strip_tags($this->input->post('a'))."</b> ... <br> Hari ini pada tanggal <span style='color:red'>$tglaktif</span> Anda Mengirimkan Permohonan Untuk Pembelian Kode Aktivasi di $identitass[nama_website],..
-					<table style='width:100%; margin-left:25px'>
-		   				<tr><td style='background:#337ab7; color:#fff; pading:20px' cellpadding=6 colspan='2'><b>Berikut Data Informasi Anda : </b></td></tr>
-						<tr><td><b>Jumlah Pin</b></td>			<td> : ".strip_tags($this->input->post('jml'))." Pin * $set[harga_pin]</td></tr>
-						<tr><td><b>Nama Lengkap</b></td>		<td> : ".strip_tags($this->input->post('a'))."</td></tr>
-						<tr><td><b>Alamat Email</b></td>		<td> : ".strip_tags($this->input->post('b'))."</td></tr>
-						<tr><td><b>No Handphone</b></td>		<td> : ".strip_tags($this->input->post('c'))."</td></tr>
-						<tr><td><b>Kota</b></td>				<td> : ".strip_tags($this->input->post('d'))." </td></tr>
-						<tr><td><b>Nama Bank</b></td>			<td> : ".strip_tags($this->input->post('e'))." </td></tr>
-						<tr><td><b>No Rekening</b></td>			<td> : ".strip_tags($this->input->post('f'))." </td></tr>
-						<tr><td><b>Pemilik Rekening</b></td>	<td> : ".strip_tags($this->input->post('g'))." </td></tr>
-						<tr><td colspan='2'>Silahkan Transfer : <b style='color:red'>Rp ".rupiah($harga)." </b>
-											<br>dan selanjutnya orderran anda segera kami proses, salam success..</td></tr>
-					</table><br>
-
-					<table style='width:100%; margin-left:25px'>
-	                  		<tr><td style='background:#337ab7; color:#fff; pading:20px' colspan='2'><b>Rekening Perusahaann : </b></td></tr>";
-	                  		foreach ($rekeninggg->result_array() as $rows){
-			                   $message .= "<tr bgcolor=#e3e3e3><td width=150px><b>Nama Bank</b></td> <td>$rows[nama_bank]</td></tr>
-					                  <tr><td><b>No Rekening</b></td>       					<td>$rows[no_rekening]</td></tr>
-					                  <tr><td><b>Pemilik Rekening</b></td>  					<td>$rows[pemilik_rekening]</td></tr>
-					                  <tr><td colspan='2'><br></td></tr>";
-		                    	}
-	                		$message .= "</table><br>
-
-					Admin, $identitass[nama_website]
-					</body></html> \n";
-
-
-				$this->email->from($identitass['email'], $identitass['nama_website']);
-				$this->email->to($email_tujuan);
-				$this->email->cc('');
-				$this->email->bcc('');
-
-				$this->email->subject($subject);
-				$this->email->message($message);
-				$this->email->set_mailtype("html");
-				$this->email->send();
-
-				$config['protocol'] = 'sendmail';
-				$config['mailpath'] = '/usr/sbin/sendmail';
-				$config['charset'] = 'utf-8';
-				$config['wordwrap'] = TRUE;
-				$config['mailtype'] = 'html';
-				$this->email->initialize($config);
-
-			$data['email'] = $this->input->post('b');
-			$this->template->load('phpmu-one/template','phpmu-one/view_order_success',$data);
-		}else{
-			$data['jml'] = $this->input->post('jml');
-			$data['title'] = 'Formulir Order Kode Aktivasi';
-			$this->template->load('phpmu-one/template','phpmu-one/view_order',$data);
-		}
-	}
-
 	public function login(){
 		if (isset($_POST['login'])){
 			if ($this->input->post('email') == '' OR $this->input->post('password') == ''){
@@ -286,11 +215,13 @@ class Auth extends CI_Controller {
 			}
 		}else{
 			if ($this->session->userdata('username') =='' ) {
+				$this->session->sess_destroy();
 					$data['title'] = 'User Login';
 			$this->load->view('sw-member/login_page',$data);
 
 			} else {
-				redirect('members');
+				$this->session->sess_destroy();
+				redirect('auth/login');
 			}
 			
 		
@@ -316,13 +247,14 @@ class Auth extends CI_Controller {
 
 	function login_ajax(){
 		if( $this->input->is_ajax_request() ) {
-			
+				//$this->session->sess_destroy();
 				$email = $this->input->post('email');
 				$password = hash("sha512", md5(strip_tags($this->input->post('password'))));
 				$cek = $this->db->query("SELECT * FROM rb_konsumen where email='".$this->db->escape_str($email)."' AND password='".$this->db->escape_str($password)."'AND status ='1' ");
 			    $row = $cek->row_array();
 			    $total = $cek->num_rows();
 				if ($total > 0){
+
 					$this->session->set_userdata(array('id_konsumen'=>$row['id_konsumen'],
 									   'username'=>$row['username'],
 									   'nama_lengkap'=>$row['nama_lengkap']));
